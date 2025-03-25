@@ -1,59 +1,53 @@
 ---
 output:
-  html_document:
+  word_document:
     toc: true
-    df_print: paged
   encoding: UTF-8
   pdf_document:
     toc: true
-  word_document:
+  html_document:
     toc: true
+    df_print: paged
 ---
-
-asddsa
 
 ### Relatório de R
 
 O presente documento foi construído para a Unidade Curricular Análise de Exploratória de Dados, da Licenciatura em Ciência de Dados do Iscte-IUL.
 
-O gráfico
-
-1.  Importar os ficheiros do Excel
-
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, echo=FALSE}
+#Importar os ficheiros do Excel
 Sys.setlocale("LC_ALL", "Portuguese_Portugal.UTF-8")
 library(openxlsx)
 bd <- read.xlsx("Trabalho_ecell.xlsx")
 head(bd)
 ```
 
-2.  Mudar o nome de duas variáveis Variáveis da base de dados
-
-```{r}
+```{r, include=FALSE, echo=FALSE}
+#Mudar o nome de duas variáveis Variáveis da base de dados
 colnames(bd)
 ```
 
 Vou mudar o nome da variável "genero" para "valor_genero" porque já existe uma variável chamada "Género"
 
-```{r}
+```{r, include=FALSE, echo=FALSE}
 names(bd)[4] = "valor_genero"
 ```
 
 Vou mudar o nome da variável "P8_rec" para "satisfacao_vida"
 
-```{r}
+```{r, include=FALSE, echo=FALSE}
 names(bd)[9] = "satisfacao_vida"
 ```
 
 3.  Para identificar os valores omissos da variável "satisfacao_vida", temos de verificar os valores que são iguais a 99, o valor pré-definido para valores omissos
 
-```{r}
+```{r, include=FALSE, echo=FALSE}
 paste("Existem",sum(bd$satisfacao_vida == 99),"valores omissos")
 ```
 
 3.  Imputar os valores omissos da variável "satisfacao_vida"
 
-```{r}
+```{r, include=FALSE, echo=FALSE}
 media_antes <- mean(bd$satisfacao_vida)
 bd$satisfacao_vida[bd$satisfacao_vida == 99] <- NA
 bd$satisfacao_vida[is.na(bd$satisfacao_vida)] <- median(bd$satisfacao_vida, na.rm = TRUE)
@@ -65,7 +59,7 @@ paste("Média antes de inputar os valores omissos:",round(media_antes,2),"\n Mé
 
 Valores descritivos
 
-```{r}
+```{r, include=FALSE, echo=FALSE}
 library(DescTools)
 library(flextable)
 library(descr)
@@ -74,7 +68,7 @@ descr(valores)
 
 ```
 
-```{r}
+```{r, include=TRUE, echo=FALSE}
 
 freq_abs <- table(valores)
 freq_rel <- prop.table(freq_abs) * 100
@@ -91,8 +85,7 @@ tabela_freq
 
 Histograma de frequências absolutas
 
-```{r}
-Sys.setlocale("LC_ALL", "Portuguese_Portugal.UTF-8")
+```{r, include=TRUE, echo=FALSE}
 
 h <- hist(valores,
           main = "Distribuição de Satisfação com a Vida", 
@@ -103,7 +96,7 @@ h <- hist(valores,
 
 ```
 
-```{r}
+```{r, include=TRUE, echo=FALSE}
 boxplot(valores, 
         main = "Boxplot da Satisfação com a Vida", 
         ylab = "Satisfação com a Vida", 
@@ -112,7 +105,7 @@ boxplot(valores,
 
 uni
 
-```{r}
+```{r, include=TRUE, echo=FALSE}
 library(ggplot2)
 
 # Definir os 7 títulos (ou sintomas)
