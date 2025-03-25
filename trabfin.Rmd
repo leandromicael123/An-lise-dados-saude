@@ -1,19 +1,22 @@
 ---
 output:
-  encoding: UTF-8
   html_document:
     toc: true
     df_print: paged
+  encoding: UTF-8
   pdf_document:
     toc: true
   word_document:
     toc: true
 ---
+
 asddsa
 
 ### Relatório de R
 
 O presente documento foi construído para a Unidade Curricular Análise de Exploratória de Dados, da Licenciatura em Ciência de Dados do Iscte-IUL.
+
+O gráfico
 
 1.  Importar os ficheiros do Excel
 
@@ -106,6 +109,8 @@ boxplot(valores,
         ylab = "Satisfação com a Vida", 
         col = "lightgreen")
 ```
+
+uni
 
 ```{r}
 library(ggplot2)
