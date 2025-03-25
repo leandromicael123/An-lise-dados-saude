@@ -1,0 +1,122 @@
+---
+output:
+  encoding: UTF-8
+  html_document:
+    toc: true
+    df_print: paged
+  pdf_document:
+    toc: true
+  word_document:
+    toc: true
+---
+
+### Relatório de R
+
+O presente documento foi construído para a Unidade Curricular Análise de Exploratória de Dados, da Licenciatura em Ciência de Dados do Iscte-IUL.
+
+1.  Importar os ficheiros do Excell
+
+```{r setup, include=FALSE}
+Sys.setlocale("LC_ALL", "Portuguese_Portugal.UTF-8")
+library(openxlsx)
+bd <- read.xlsx("Trabalho_ecell.xlsx")
+head(bd)
+```
+
+2.  Mudar o nome de duas variáveis Variáveis da base de dados
+
+```{r}
+colnames(bd)
+```
+
+Vou mudar o nome da variável "genero" para "valor_genero" porque já existe uma variável chamada "Género"
+
+```{r}
+names(bd)[4] = "valor_genero"
+```
+
+Vou mudar o nome da variável "P8_rec" para "satisfacao_vida"
+
+```{r}
+names(bd)[9] = "satisfacao_vida"
+```
+
+3.  Para identificar os valores omissos da variável "satisfacao_vida", temos de verificar os valores que são iguais a 99, o valor pré-definido para valores omissos
+
+```{r}
+paste("Existem",sum(bd$satisfacao_vida == 99),"valores omissos")
+```
+
+3.  Imputar os valores omissos da variável "satisfacao_vida"
+
+```{r}
+media_antes <- mean(bd$satisfacao_vida)
+bd$satisfacao_vida[bd$satisfacao_vida == 99] <- NA
+bd$satisfacao_vida[is.na(bd$satisfacao_vida)] <- median(bd$satisfacao_vida, na.rm = TRUE)
+media_depois <- mean(bd$satisfacao_vida)
+paste("Média antes de inputar os valores omissos:",round(media_antes,2),"\n Média depois de inputar os valores omissos com mediana", round(media_depois,2))
+```
+
+5.  Analise descritiva dos dados
+
+Valores descritivos
+
+```{r}
+library(DescTools)
+library(flextable)
+library(descr)
+valores <- as.numeric(bd$satisfacao_vida)
+descr(valores)
+
+```
+
+```{r}
+
+freq_abs <- table(valores)
+freq_rel <- prop.table(freq_abs) * 100
+
+tabela_freq <- data.frame(
+  "Valor" = names(freq_abs),
+  "Frequência Absoluta" = as.vector(freq_abs),
+  "Frequência Relativa (%)" = round(as.vector(freq_rel), 2)
+)
+
+# Exibir a tabela
+tabela_freq
+```
+
+Histograma de frequências absolutas
+
+```{r}
+Sys.setlocale("LC_ALL", "Portuguese_Portugal.UTF-8")
+
+h <- hist(valores,
+          main = "Distribuição de Satisfação com a Vida", 
+          xlab = "Satisfação com a Vida", 
+          ylab = "Frequência", 
+          col = "lightblue", 
+          )
+
+```
+
+```{r}
+boxplot(valores, 
+        main = "Boxplot da Satisfação com a Vida", 
+        ylab = "Satisfação com a Vida", 
+        col = "lightgreen")
+```
+
+```{r}
+library(ggplot2)
+ 
+# create a dataset
+specie <- valo
+condition <- rep(c("Homens" , "Mulheres" , "Nitrogen") , 4)
+value <- abs(rnorm(12 , 0 , 15))
+data <- data.frame(specie,condition,value)
+ 
+# Grouped
+ggplot(data, aes(fill=condition, y=value, x=specie)) + 
+    geom_bar(position="dodge", stat="identity")
+
+```
