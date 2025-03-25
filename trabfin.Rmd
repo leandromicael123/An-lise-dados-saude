@@ -10,12 +10,12 @@ output:
     toc: true
 ---
 asddsa
-fsfssdfsds
+
 ### Relatório de R
 
 O presente documento foi construído para a Unidade Curricular Análise de Exploratória de Dados, da Licenciatura em Ciência de Dados do Iscte-IUL.
 
-1.  Importar os ficheiros do Excell
+1.  Importar os ficheiros do Excel
 
 ```{r setup, include=FALSE}
 Sys.setlocale("LC_ALL", "Portuguese_Portugal.UTF-8")
