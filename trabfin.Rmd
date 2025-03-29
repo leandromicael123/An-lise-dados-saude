@@ -105,7 +105,7 @@ boxplot(valores,
 
 uni
 
-```{r, include=TRUE, echo=FALSE}
+```{r}
 library(ggplot2)
 
 # Definir os 7 títulos (ou sintomas)
@@ -150,5 +150,6 @@ ggplot(data, aes(fill = condition, y = value, x = specie)) +
     x = "Sintomas",
     y = "Média de Ansiedade"
   ) 
+
 
 ```
