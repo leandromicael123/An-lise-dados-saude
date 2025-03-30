@@ -96,6 +96,7 @@ output:
 </head>
 ```{r setup, include=FALSE, echo=FALSE}
 library(DescTools)
+library(ggplot2)
 library(flextable)
 library(descr)
 #Importar os ficheiros do Excel
@@ -251,7 +252,6 @@ boxplot(valores,
 uni
 
 ```{r, include=TRUE, echo=FALSE}
-library(ggplot2)
 
 # Definir os 7 títulos (ou sintomas)
 specie <- c(
