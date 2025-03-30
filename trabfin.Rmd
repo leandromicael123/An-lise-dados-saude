@@ -212,7 +212,7 @@ Nesse sentido, a promoção do bem-estar emocional passa pela implementação de
 <br>
 <p>De modo a pudermos ter um conhecimento mais aprofundado dos dados disponibilizados pelos 1125 inquiridos, foi feito um enquadramento social-demográfico. Para tal, foram feitos estudos em relação ao género, idade e ciclo escolar.</p>
 
-<p>Em termos de distribuição por género: 255 das pessoas inquiridas identificaram-se como mulheres, sendo então 50% da amostra e 170 identificaram-se como homens, correspondendo a 40% da amostra. (Tabela 1).</p>
+<p>Em termos de distribuição por género: 571 das pessoas inquiridas identificaram-se como mulheres, sendo então 45% da amostra e 514 identificaram-se como homens, correspondendo a 46% da amostra, 15 pessoas responderam outro repesentam 1% e 25 pessoas representam 2% (Tabela 1).</p>
 
 ```{r, include=FALSE, echo=FALSE}
 Gen <- c(unique(bd$Género))
@@ -246,12 +246,7 @@ ftab_sexo
 
 <br> <br> <br>
 
-<p>Em termos de distribuição por local de residência dos inquiridos: 141
-indivíduos residem na periferia das grandes cidades de Lisboa ou de
-Setúbal, representando 33,2% da amostra, enquanto que apenas 1,2%
-residem numa casa isolada no campo. Esta análise é relevante ao estudo
-uma vez que, dependendo do local de residência do sinquiridos, os
-comportamentos e atitudes relativas ao ambiente variam (**Tabela
+<p>Em termos de distribuição por idades (**Tabela
 2**).</p>
 
 <br>
@@ -259,29 +254,36 @@ comportamentos e atitudes relativas ao ambiente variam (**Tabela
 </div>
 
 Histograma de frequências absolutas
-```{r}
-# Gráfico de Barras para Ciclo Escolar (3 e 4)
-plot_ciclo <- ggplot(bd, aes(x = factor(cicloescolar))) +  # Converter para fator temporariamente
-  geom_bar(fill = c("#1f78b4", "#33a02c")) +  # Cores diretas para 3 e 4
-  scale_x_discrete(labels = c("3" = "3º Ciclo", "4" = "Secundário")) +  # Rótulos claros
-  labs(title = "Ciclo Escolar",
-       x = "",
-       y = "Contagem") +
+```{r, echo=FALSE,include=TRUE}
+plot_ciclo <- ggplot(bd, aes(x = factor(cicloescolar))) +
+  geom_bar(fill = c("#1f78b4", "#33a02c")) +
+  scale_x_discrete(labels = c("3" = "3º Ciclo", "4" = "Secundário")) +
+  labs(title = "Ciclo Escolar", x = "", y = "Contagem") +
   theme_minimal()
 
-# Gráfico de Densidade para Idade (P3)
+# Histograma para idades inteiras
 plot_idade <- ggplot(bd, aes(x = P3)) +
-  geom_density(fill = "#e31a1c", alpha = 0.5) +
-  labs(title = "Distribuição de Idade",
-       x = "Idade",
-       y = "Densidade") +
+  geom_histogram(
+    fill = "red", 
+    binwidth = 1,          # Cada barra representa 1 ano inteiro
+    color = "black",       # Bordas pretas para destacar os intervalos
+    boundary = 0.5         # Alinha as barras para começar/terminar em números inteiros
+  ) +
+  scale_x_continuous(
+    breaks = seq(floor(min(bd$P3)), ceiling(max(bd$P3))),  # Rótulos em inteiros
+    labels = seq(floor(min(bd$P3)), ceiling(max(bd$P3)))
+  ) +
+  labs(title = "Distribuição de Idades (Valores Inteiros)", x = "Idade", y = "Contagem") +
   theme_minimal()
 
 # Combinar os gráficos
 grid.arrange(plot_ciclo, plot_idade, ncol = 2)
-
 ```
+<p>
 
+<center>**Gráfico 1 e 2** - Distribuição por da popução inquirida entre ciclo escolar e idade</center>
+
+</p>
 ```{r, include=TRUE, echo=FALSE}
 valores <- as.numeric(bd$satisfacao_vida)
 h <- hist(valores,
@@ -294,14 +296,8 @@ h <- hist(valores,
 ```
 
 ```{r}
-valores <- as.numeric(bd$P3)
-h <- hist(valores,
-          main = "Distribuição das Idades", 
-          xlab = "Idades", 
-          ylab = "Frequência", 
-          col = "lightgreen", 
-          )
 ```
+
 ```{r}
 Age<-table(bd$P3)
 
