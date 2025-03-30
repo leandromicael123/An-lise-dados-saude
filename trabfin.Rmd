@@ -138,6 +138,14 @@ Março de 2025
 
 </ul>
 
+<br>
+
+<hr>
+
+<h3>INTRODUÇÃO</h3>
+
+<br>
+
 O presente documento foi construído para a Unidade Curricular Análise de Exploratória de Dados, da Licenciatura em Ciência de Dados do Iscte-IUL.
 
 ### Introdução
