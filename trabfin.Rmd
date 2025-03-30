@@ -270,6 +270,17 @@ h <- hist(valores,
 ```
 
 ```{r}
+valores <- as.numeric(bd$P3)
+h <- hist(valores,
+          main = "Distribuição das Idades", 
+          xlab = "Idades", 
+          ylab = "Frequência", 
+          col = "lightgreen", 
+          )
+```
+
+
+```{r}
 # Definir os 7 títulos (ou sintomas)
 specie <- c(
   rep("A", 4),  # 4 repetições para o título "A"
@@ -284,17 +295,23 @@ specie <- c(
 # Verificar o comprimento de 'specie'
 length(specie)  # Deve retornar 28 (7 títulos * 4 géneros)
 
-# Replicar 'bd$Género' para corresponder ao comprimento de 'specie' (4 géneros por título)
-condition <- rep(bd$P3, length.out = length(specie))
+# Verifique se bd$P3 existe e não está vazio
+if (exists("bd") && !is.null(bd$P3)) {
+  # Replicar 'bd$P3' para corresponder ao comprimento de 'specie' (4 géneros por título)
+  condition <- rep(bd$P3, length.out = length(specie))
+} else {
+  stop("bd$P3 não está disponível ou está vazio.")
+}
 
+# Calcular as médias das colunas de ansiedade
 mean_values <- c(
-mean(bd$v38_ansiedade),
-mean(bd$v40_ansiedade),
-mean(bd$v43_ansiedade),
-mean(bd$v45_ansiedade),
-mean(bd$v51_ansiedade),
-mean(bd$v55_ansiedade),
-mean(bd$v56_ansiedade)
+  mean(bd$v38_ansiedade, na.rm = TRUE),
+  mean(bd$v40_ansiedade, na.rm = TRUE),
+  mean(bd$v43_ansiedade, na.rm = TRUE),
+  mean(bd$v45_ansiedade, na.rm = TRUE),
+  mean(bd$v51_ansiedade, na.rm = TRUE),
+  mean(bd$v55_ansiedade, na.rm = TRUE),
+  mean(bd$v56_ansiedade, na.rm = TRUE)
 )
 
 # Replicar as médias para corresponder ao comprimento de 'specie'
@@ -303,14 +320,20 @@ value <- rep(mean_values, length.out = length(specie))
 # Criar o dataframe
 data <- data.frame(specie, condition, value)
 
+# Verifique a estrutura dos dados
+str(data)
+
 # Criar o gráfico de barras agrupadas
 ggplot(data, aes(fill = condition, y = value, x = specie)) + 
-  geom_bar(position = "dodge", stat = "identity") +
+  geom_bar(stat = "identity", position = "dodge") +  # Usar barras agrupadas
   labs(
     title = "Níveis de Ansiedade por Idade",
     x = "Sintomas",
     y = "Média de Ansiedade"
-  ) 
+  ) +
+  theme_minimal()  # Um tema mais simples
+
+
 ```
 
 
