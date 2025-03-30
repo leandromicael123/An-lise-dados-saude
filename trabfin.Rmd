@@ -1,18 +1,27 @@
 ---
 output:
-  word_document:
-    toc: true
-  encoding: UTF-8
-  pdf_document:
-    toc: true
   html_document:
     toc: true
     df_print: paged
+  encoding: UTF-8
+  pdf_document:
+    toc: true
+  word_document:
+    toc: true
 ---
 
-### Relatório de R
+# Relatório de R
 
 O presente documento foi construído para a Unidade Curricular Análise de Exploratória de Dados, da Licenciatura em Ciência de Dados do Iscte-IUL.
+
+### Introdução
+
+Este relatório apresenta uma análise exploratória dos dados relativos ao estudo "Saúde Psicológica e Bem-Estar", promovido pelo Ministério da Educação em 2022, após o período de pandemia Covid-19. O principal objetivo deste estudo é diagnosticar e compreender o panorama da saúde psicológica e bem-estar das crianças e adolescentes em idade escolar em diferentes regiões de Portugal. Os dados analisados referem-se a um excerto das respostas dos alunos (ou dos seus educadores) ao questionário aplicado.
+
+### Metodologia
+
+A preparação e organização do conjunto de dados e correspondente análise descritiva, em função do contexto e objetivos definidos foi realizada utilizando o Excel, Jamovi e R. 
+Começaremos por abordar a descrição dos dados e as questões de qualidade, incluindo tratamento de valores omissos, duplicados e inconsistências. 
 
 ```{r setup, include=FALSE, echo=FALSE}
 #Importar os ficheiros do Excel
