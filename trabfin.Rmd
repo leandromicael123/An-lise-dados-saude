@@ -122,7 +122,6 @@ Março de 2025
 <ul>
 
 <td>Leandro Bernardo, nº 125293</td>
-<<<<<<< Updated upstream
 <br>
 <td>Paula Relvas, nº 43905</td>
 <br>
@@ -130,13 +129,9 @@ Março de 2025
 <br>
 <td>Ricardo Fonseca, nº 130650</td>
 <br>
+<td>Tiago Oeber, nº 130667</td>
 =======
 
-<td>Paula Relvas, nº 43905</td>
-
-<td>Pedro Gonçalves, nº 130668</td>
-
-<td>Ricardo Fonseca, nº 130650</td>
 
 >>>>>>> Stashed changes
 <td>Tiago Oeber, nº 130667</td>
