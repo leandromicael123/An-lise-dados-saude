@@ -208,25 +208,45 @@ Nesse sentido, a promoção do bem-estar emocional passa pela implementação de
 
 ```{r, include=FALSE, echo=FALSE}
 Gen <- c(unique(bd$Género))
-valores <- as.numeric(bd$satisfacao_vida)
-descr(valores)
+freq_absoluta <- table(bd$Género)
 
+# Calcular a frequência relativa (percentagem)
+freq_relativa <- prop.table(freq_absoluta) * 100
+
+# Criar a tabela como um data frame
+tabela_frequencias <- data.frame(Género = names(freq_absoluta),
+                                 Frequência = as.vector(freq_absoluta),
+                                 Percentagem = as.vector(freq_relativa))
+ftab_sexo <- flextable(head(tabela_frequencias))
+ftab_sexo <- bg(ftab_sexo, bg = "#3895D3", part = "header")
+ftab_sexo <- color(ftab_sexo, color = "white", part = "header")
 ```
 
-```{r, include=TRUE, echo=FALSE}
+<div>
 
-freq_abs <- table(valores)
-freq_rel <- prop.table(freq_abs) * 100
-
-tabela_freq <- data.frame(
-  "Valor" = names(freq_abs),
-  "Frequência Absoluta" = as.vector(freq_abs),
-  "Frequência Relativa (%)" = round(as.vector(freq_rel), 2)
-)
-
-# Exibir a tabela
-tabela_freq
+```{r echo=FALSE}
+ftab_sexo
 ```
+
+<p>
+
+<center>**Tabela 1** - Distribuição por sexos</center>
+
+</p>
+
+<br> <br> <br>
+
+<p>Em termos de distribuição por local de residência dos inquiridos: 141
+indivíduos residem na periferia das grandes cidades de Lisboa ou de
+Setúbal, representando 33,2% da amostra, enquanto que apenas 1,2%
+residem numa casa isolada no campo. Esta análise é relevante ao estudo
+uma vez que, dependendo do local de residência do sinquiridos, os
+comportamentos e atitudes relativas ao ambiente variam (**Tabela
+2**).</p>
+
+<br>
+
+</div>
 
 Histograma de frequências absolutas
 
