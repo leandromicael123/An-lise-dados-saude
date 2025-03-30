@@ -193,8 +193,7 @@ Por sua vez, o bem-estar emocional diz respeito à capacidade de gerir as emoç�
 
 A interação entre ansiedade e bem-estar emocional revela-se complexa e multifacetada. Enquanto um determinado grau de ansiedade pode funcionar como um estímulo para a motivação e o desempenho, a sua presença crónica e elevada tende a comprometer o equilíbrio emocional, prejudicando a saúde mental do indivíduo. Diversos fatores, como o ambiente familiar, o contexto social, o nível de stress e os hábitos de vida, exercem uma influência significativa na regulação da ansiedade e na promoção do bem-estar. <br>
 
-Observa-se que, nos últimos anos, o fenômeno da ansiedade tem recebido atenção crescente, sobretudo entre os jovens. Questões como o uso intensivo das redes sociais, a pressão no âmbito académico e profissional, bem como a instabilidade socioeconómica, são apontadas como contribuintes para o aumento dos níveis de ansiedade na sociedade contemporânea. <br>
-Nesse sentido, a promoção do bem-estar emocional passa pela implementação de estratégias eficazes de gestão do stress. A prática regular de exercício físico, a adoção de hábitos de vida saudáveis, o fortalecimento das redes de apoio e o desenvolvimento de competências emocionais são fundamentais para a melhoria da saúde mental. Além disso, a conscientização acerca da importância do cuidado com a saúde psicológica, aliada à disponibilização de recursos de apoio, reveste-se de caráter indispensável para auxiliar os indivíduos a lidar com a ansiedade e, assim, alcançar uma vida mais plena e equilibrada.</p>
+<p>Observa-se que, nos últimos anos, o fenômeno da ansiedade tem recebido atenção crescente, sobretudo entre os jovens. Questões como o uso intensivo das redes sociais, a pressão no âmbito académico e profissional, bem como a instabilidade socioeconómica, são apontadas como contribuintes para o aumento dos níveis de ansiedade na sociedade contemporânea.Nesse sentido, a promoção do bem-estar emocional passa pela implementação de estratégias eficazes de gestão do stress. A prática regular de exercício físico, a adoção de hábitos de vida saudáveis, o fortalecimento das redes de apoio e o desenvolvimento de competências emocionais são fundamentais para a melhoria da saúde mental. Além disso, a conscientização acerca da importância do cuidado com a saúde psicológica, aliada à disponibilização de recursos de apoio, reveste-se de caráter indispensável para auxiliar os indivíduos a lidar com a ansiedade e, assim, alcançar uma vida mais plena e equilibrada.
 
 <br>
 
@@ -202,7 +201,7 @@ Nesse sentido, a promoção do bem-estar emocional passa pela implementação de
 
 <br>
 
-<p>O tratamento dos valores omissos iniciou-se com a substituição dos espaços em branco pelo valor 99. No entanto, para aplicar uma abordagem mais adequada, esses valores foram temporariamente convertidos para null e, em seguida, substituídos pela mediana. Esse método foi utilizado para as variáveis relacionadas com a ansiedade, como "v38_ansiedade", "v40_ansiedade", "v43_ansiedade", "v45_ansiedade", "v51_ansiedade", "v55_ansiedade" e "v56_ansiedade", que apresentavam um número significativo de valores ausentes. A substituição pela mediana permitiu minimizar distorções nos dados e garantir uma representação mais fiel da distribuição original das respostas.</p>
+<p>O tratamento dos valores omissos iniciou-se com a substituição dos espaços em branco pelo valor 99. No entanto, para aplicar uma abordagem mais adequada, esses valores foram temporariamente convertidos para null e, em seguida, substituídos pela mediana. Esse método foi utilizado para as variáveis relacionadas com a ansiedade, como "v38_ansiedade", "v40_ansiedade", "v43_ansiedade", "v45_ansiedade", "v51_ansiedade", "v55_ansiedade", "v56_ansiedade" e "AF_Q554", que apresentavam um número significativo de valores ausentes. A substituição pela mediana permitiu minimizar distorções nos dados e garantir uma representação mais fiel da distribuição original das respostas.</p>
 
 
 <br> <br>
@@ -234,7 +233,7 @@ mean(bd$P3)
 <br>
 
 
-```{r echo=FALSE}
+```{r, include=TRUE, echo=FALSE}
 ftab_sexo
 ```
 
@@ -255,7 +254,7 @@ ftab_sexo
 
 </div>
 
-```{r, echo=FALSE,include=TRUE}
+```{r, include=TRUE, echo=FALSE}
 plot_ciclo <- ggplot(bd, aes(x = factor(cicloescolar))) +
   geom_bar(fill = c("#1f78b4", "#33a02c")) +
   scale_x_discrete(labels = c("3" = "3º Ciclo", "4" = "Secundário")) +
@@ -291,7 +290,7 @@ grid.arrange(plot_ciclo, plot_idade, ncol = 2)
 
 
 <br> <br> 
-```{r,echo=FALSE}
+```{r, include=TRUE, echo=FALSE}
 # Tabela com os dados descritivos
 N <- nrow(bd)
 Média <- round(mean(bd$P3, na.rm = TRUE),2)
@@ -335,7 +334,7 @@ h <- hist(valores,
 
 
 
-```{r}
+```{r, include=TRUE, echo=FALSE}
 # Definir os 7 títulos (ou sintomas)
 specie <- c(
   rep("A", 4),  # 4 repetições para o título "A"
