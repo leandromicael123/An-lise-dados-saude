@@ -141,10 +141,9 @@ bd$AF_Q554[is.na(bd$AF_Q554)] <- median(bd$AF_Q554, na.rm = TRUE)
 
 <h1 style="font-size: 40px;">**RELATÓRIO - CASO PRÁTICO - AMBIENTE 10**</h1>
 
-<<<<<<< HEAD
+
 <p style="text-align:center;font-size: 15px;">Março de 2025</p>
-=======
-**RELATÓRIO DE AED - CASO PRÁTICO - AMBIENTE 10**
+
 
 </h1>
 
@@ -211,7 +210,7 @@ Gen <- c(unique(bd$Género))
 freq_absoluta <- table(bd$Género)
 
 # Calcular a frequência relativa (percentagem)
-freq_relativa <- prop.table(freq_absoluta) * 100
+freq_relativa <- round(prop.table(freq_absoluta) * 100)
 
 # Criar a tabela como um data frame
 tabela_frequencias <- data.frame(Género = names(freq_absoluta),
@@ -221,6 +220,7 @@ ftab_sexo <- flextable(head(tabela_frequencias))
 ftab_sexo <- bg(ftab_sexo, bg = "#3895D3", part = "header")
 ftab_sexo <- color(ftab_sexo, color = "white", part = "header")
 ```
+
 
 <div>
 
@@ -251,7 +251,7 @@ comportamentos e atitudes relativas ao ambiente variam (**Tabela
 Histograma de frequências absolutas
 
 ```{r, include=TRUE, echo=FALSE}
-
+valores <- as.numeric(bd$satisfacao_vida)
 h <- hist(valores,
           main = "Distribuição de Satisfação com a Vida", 
           xlab = "Satisfação com a Vida", 
@@ -289,7 +289,11 @@ length(specie)  # Deve retornar 28 (7 títulos * 4 géneros)
 
 # Replicar 'bd$Género' para corresponder ao comprimento de 'specie' (4 géneros por título)
 condition <- rep(bd$Género, length.out = length(specie))
-
+mean_values <- c(mean(bd$v38_ansiedade),mean(bd$v40_ansiedade),
+                 mean(bd$v43_ansiedade),mean(bd$v45_ansiedade),
+                 mean(bd$v51_ansiedade),mean(bd$v55_ansiedade),
+                 mean(bd$v56_ansiedade)
+                 )
 # Replicar as médias para corresponder ao comprimento de 'specie'
 value <- rep(mean_values, length.out = length(specie))
 
