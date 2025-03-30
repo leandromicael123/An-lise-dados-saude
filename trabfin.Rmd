@@ -105,7 +105,7 @@ output:
 
 <h1 style="font-size: 40px;">
 
-**RELATÓRIO DE AED**
+**RELATÓRIO - CASO PRÁTICO - AMBIENTE 10**
 
 </h1>
 
@@ -138,7 +138,7 @@ Março de 2025
 
 <hr>
 
-<h3>INTRODUÇÃO</h3>
+<h3>**INTRODUÇÃO**</h3>
 
 <br>
 
@@ -178,7 +178,7 @@ Nesse sentido, a promoção do bem-estar emocional passa pela implementação de
 
 A preparação e organização do conjunto de dados e correspondente análise descritiva, em função do contexto e objetivos definidos foi realizada utilizando o Excel, Jamovi e R. Começaremos por abordar a descrição dos dados e as questões de qualidade, incluindo tratamento de valores omissos, duplicados e inconsistências.
 
-```{r setup, include=FALSE, echo=FALSE}
+```{r setup, include=FALSE, echo=TRUE}
 library(DescTools)
 library(flextable)
 library(descr)
