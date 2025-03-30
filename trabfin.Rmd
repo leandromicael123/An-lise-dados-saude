@@ -97,14 +97,16 @@ output:
 
 <body>
 
-::: {.imag style="text-aling:center"}
+::: {.imag style="text-align:center"}
 ![](https://mostra.caerus.pt/wp-content/uploads/2021/04/ISCTE_Logo.png)
 :::
-
 <hr>
 
-<h1 style="font-size: 40px;">
+<h1 style="font-size: 40px;">**RELATÓRIO - CASO PRÁTICO - AMBIENTE 10**</h1>
 
+<<<<<<< HEAD
+<p style="text-align:center;font-size: 15px;">Março de 2025</p>
+=======
 **RELATÓRIO DE AED - CASO PRÁTICO - AMBIENTE 10**
 
 </h1>
@@ -114,7 +116,6 @@ output:
 Março de 2025
 
 </p>
-
 <br>
 
 <h4>Trabalho realizado por:</h4>
@@ -138,37 +139,34 @@ O presente documento foi construído para a Unidade Curricular Análise de Explo
 
 </ul>
 
-<h3>**1. TRATAMENTO DE DADOS**</h3>
+<h3>**INTRODUÇÃO**</h3>
 
 <br>
 
-<p> 
-
-</p>
-
-<h4>**INTRODUÇÃO**</h4>
-
-<br>
+<p>A ansiedade e o bem-estar emocional constituem dois pilares essenciais para a compreensão da saúde mental. A ansiedade, enquanto resposta natural do organismo a situações de stress ou perigo, manifesta-se através de sentimentos de preocupação, medo e tensão. Embora essa reação seja intrínseca à nossa natureza, ela pode tornar-se prejudicial quando se intensifica de forma excessiva ou persistente, afetando o quotidiano e o funcionamento psicológico do indivíduo. <br>
 
 A ansiedade e o bem-estar emocional constituem dois pilares essenciais para a compreensão da saúde mental. A ansiedade, enquanto resposta natural do organismo a situações de stress ou perigo, manifesta-se através de sentimentos de preocupação, medo e tensão. Embora essa reação seja intrínseca à nossa natureza, ela pode tornar-se prejudicial quando se intensifica de forma excessiva ou persistente, afetando o quotidiano e o funcionamento psicológico do indivíduo. <br>
-
 Por sua vez, o bem-estar emocional diz respeito à capacidade de gerir as emoções, enfrentar desafios e manter um equilíbrio psicológico estável, o conceito envolve a satisfação com a vida, a resiliência frente às adversidades e o sentimento de controlo sobre os próprios pensamentos e emoções. Um elevado nível de bem-estar emocional está frequentemente associado a uma melhor qualidade de vida, relações interpessoais enriquecedoras e maior produtividade em diversas esferas da vida. <br>
 
 A interação entre ansiedade e bem-estar emocional revela-se complexa e multifacetada. Enquanto um determinado grau de ansiedade pode funcionar como um estímulo para a motivação e o desempenho, a sua presença crónica e elevada tende a comprometer o equilíbrio emocional, prejudicando a saúde mental do indivíduo. Diversos fatores, como o ambiente familiar, o contexto social, o nível de stress e os hábitos de vida, exercem uma influência significativa na regulação da ansiedade e na promoção do bem-estar. <br>
 
 Observa-se que, nos últimos anos, o fenômeno da ansiedade tem recebido atenção crescente, sobretudo entre os jovens. Questões como o uso intensivo das redes sociais, a pressão no âmbito académico e profissional, bem como a instabilidade socioeconómica, são apontadas como contribuintes para o aumento dos níveis de ansiedade na sociedade contemporânea. <br>
 
-Nesse sentido, a promoção do bem-estar emocional passa pela implementação de estratégias eficazes de gestão do stress. A prática regular de exercício físico, a adoção de hábitos de vida saudáveis, o fortalecimento das redes de apoio e o desenvolvimento de competências emocionais são fundamentais para a melhoria da saúde mental. Além disso, a conscientização acerca da importância do cuidado com a saúde psicológica, aliada à disponibilização de recursos de apoio, reveste-se de caráter indispensável para auxiliar os indivíduos a lidar com a ansiedade e, assim, alcançar uma vida mais plena e equilibrada.
+Nesse sentido, a promoção do bem-estar emocional passa pela implementação de estratégias eficazes de gestão do stress. A prática regular de exercício físico, a adoção de hábitos de vida saudáveis, o fortalecimento das redes de apoio e o desenvolvimento de competências emocionais são fundamentais para a melhoria da saúde mental. Além disso, a conscientização acerca da importância do cuidado com a saúde psicológica, aliada à disponibilização de recursos de apoio, reveste-se de caráter indispensável para auxiliar os indivíduos a lidar com a ansiedade e, assim, alcançar uma vida mais plena e equilibrada.</p>
 
 <br>
 
-<h4>**Metodologia**</h4>
+<h3>**1. TRATAMENTO DE DADOS**</h3>
 
 <br>
 
-A preparação e organização do conjunto de dados e correspondente análise descritiva, em função do contexto e objetivos definidos foi realizada utilizando o Excel, Jamovi e R. Começaremos por abordar a descrição dos dados e as questões de qualidade, incluindo tratamento de valores omissos, duplicados e inconsistências.
+<p> O tratmento dos valores omissos começou com tornar os valores em brancos para 99, no R nós passamos os valores em null, todas as variaveis relacionadas com ansiedade como "v38_ansiedade", "v40_ansiedade", "v43_ansiedade","v45_ansiedade","v51_ansiedade","v55_ansiedade","v56_ansiedade"
 
-```{r setup, include=FALSE, echo=TRUE}
+O tratamento dos valores omissos fez-se em vários passos. Primeiro, os valores em branco foram alterados para um código (99) que é representativo das mesmas. Para a nossa análise, reparámos que as variáveis “Onde vive”, “Transportes públicos”, “Produtos pelo ambiente”, “Apagar as luzes” e “Fechar a torneira” tinham uma grande quantidade de respostas nulas, por esse motivo realizou-se uma imputação dos valores inexistentes pela mediana das respostas.
+
+Neste ponto foram atribuídos valores numéricos a variáveis de texto e valores texto a variáveis numéricas, sendo que no caso de resposta em branco foi atribuído anteriormente o valor 99.</p>
+
+```{r setup, include=TRUE, echo=TRUE}
 library(DescTools)
 library(flextable)
 library(descr)
@@ -207,74 +205,13 @@ bd$AF_Q554[is.na(bd$AF_Q554)] <- median(bd$AF_Q554, na.rm = TRUE)
 
 Valores descritivos
 
-```{r}
-#Frequencia de idades
-
-valores <- as.numeric(bd$P3)
-
-h <- hist(valores,
-          main = "Distribuição da idade", 
-          xlab = "P3", 
-          ylab = "Frequência", 
-          col = "green", 
-          )
-```
-
-```{r}
-#Tabela entre idades e ansiedades
-library(ggplot2)
-
-# Definir os 7 títulos (ou sintomas)
-specie <- c(
-  rep("A", 4),  # 4 repetições para o título "A"
-  rep("B", 4),  # 4 repetições para o título "B"
-  rep("C", 4),  # 4 repetições para o título "C"
-  rep("D", 4),  # 4 repetições para o título "D"
-  rep("E", 4),  # 4 repetições para o título "E"
-  rep("F", 4),  # 4 repetições para o título "F"
-  rep("G", 4)   # 4 repetições para o título "G"
-)
-
-# Verificar o comprimento de 'specie'
-length(specie)  # Deve retornar 28 (7 títulos * 4 géneros)
-
-# Replicar 'bd$Género' para corresponder ao comprimento de 'specie' (4 géneros por título)
-condition <- rep(bd$P3, length.out = length(specie))
-
-# Definir as médias das colunas de ansiedade
-mean_values <- c(
-  mean(bd$v38_ansiedade),
-  mean(bd$v40_ansiedade),
-  mean(bd$v43_ansiedade),
-  mean(bd$v45_ansiedade),
-  mean(bd$v51_ansiedade),
-  mean(bd$v55_ansiedade),
-  mean(bd$v56_ansiedade)
-)
-
-# Replicar as médias para corresponder ao comprimento de 'specie'
-value <- rep(mean_values, length.out = length(specie))
-
-# Criar o dataframe
-data <- data.frame(specie, condition, value)
-
-# Criar o gráfico de barras agrupadas
-ggplot(data, aes(fill = condition, y = value, x = specie)) + 
-  geom_bar(position = "dodge", stat = "identity") +
-  labs(
-    title = "Níveis de Ansiedade por Idade",
-    x = "Sintomas",
-    y = "Média de Ansiedade"
-  ) 
-```
-
-
 ```{r, include=FALSE, echo=FALSE}
 library(DescTools)
 library(flextable)
 library(descr)
 valores <- as.numeric(bd$satisfacao_vida)
 descr(valores)
+
 ```
 
 ```{r, include=TRUE, echo=FALSE}
@@ -306,6 +243,7 @@ h <- hist(valores,
 ```
 
 ```{r, include=TRUE, echo=FALSE}
+#boxplot
 boxplot(valores, 
         main = "Boxplot da Satisfação com a Vida", 
         ylab = "Satisfação com a Vida", 
