@@ -97,23 +97,14 @@ output:
 
 <body>
 
-::: {.imag style="text-aling:center"}
+::: {.imag style="text-align:center"}
 ![](https://mostra.caerus.pt/wp-content/uploads/2021/04/ISCTE_Logo.png)
 :::
-
 <hr>
 
-<h1 style="font-size: 40px;">
+<h1 style="font-size: 40px;">**RELATÓRIO - CASO PRÁTICO - AMBIENTE 10**</h1>
 
-**RELATÓRIO - CASO PRÁTICO - AMBIENTE 10**
-
-</h1>
-
-<p style="text-align:center;font-size: 15px;">
-
-Março de 2025
-
-</p>
+<p style="text-align:center;font-size: 15px;">Março de 2025</p>
 
 <br>
 
@@ -174,7 +165,7 @@ Nesse sentido, a promoção do bem-estar emocional passa pela implementação de
 
 A preparação e organização do conjunto de dados e correspondente análise descritiva, em função do contexto e objetivos definidos foi realizada utilizando o Excel, Jamovi e R. Começaremos por abordar a descrição dos dados e as questões de qualidade, incluindo tratamento de valores omissos, duplicados e inconsistências.
 
-```{r setup, include=FALSE, echo=TRUE}
+```{r setup, include=TRUE, echo=TRUE}
 library(DescTools)
 library(flextable)
 library(descr)
