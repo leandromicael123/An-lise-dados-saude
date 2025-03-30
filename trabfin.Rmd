@@ -334,6 +334,13 @@ h <- hist(valores,
 
 <h3>**3. Ansiedade**</h3>
 
+```{r, include=TRUE, echo=FALSE}
+#boxplot
+boxplot(valores, 
+        main = "Boxplot da Satisfação com a Vida", 
+        ylab = "Satisfação com a Vida", 
+        col = "lightgreen")
+```
 
 
 ```{r, include=TRUE, echo=FALSE}
@@ -390,15 +397,6 @@ ggplot(data, aes(fill = condition, y = value, x = specie)) +
   theme_minimal()  # Um tema mais simples
 
 
-```
-
-
-```{r, include=TRUE, echo=FALSE}
-#boxplot
-boxplot(valores, 
-        main = "Boxplot da Satisfação com a Vida", 
-        ylab = "Satisfação com a Vida", 
-        col = "lightgreen")
 ```
 
 uni
