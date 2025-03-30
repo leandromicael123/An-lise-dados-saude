@@ -120,20 +120,15 @@ Março de 2025
 
 <ul>
 
-<td>Dinis Cardoso, nº 105663</td>
-
+<td>Leandro Bernardo, nº 125293</td>
 <br>
-
-<td>Luana Pinto, nº 111145</td>
-
+<td>Paula Relvas, nº 43905</td>
 <br>
-
-<td>Nuno Matos, nº 111102</td>
-
+<td>Pedro Gonçalves, nº 130668</td>
 <br>
-
-<td>Tomás Mendes, nº 110612</td>
-
+<td>Ricardo Fonseca, nº 130650</td>
+<br>
+<td>Tiago Oeber, nº 130667</td>
 <br>
 
 </ul>
