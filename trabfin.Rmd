@@ -191,7 +191,7 @@ O presente documento foi construído para a Unidade Curricular Análise de Explo
 A ansiedade e o bem-estar emocional constituem dois pilares essenciais para a compreensão da saúde mental. A ansiedade, enquanto resposta natural do organismo a situações de stress ou perigo, manifesta-se através de sentimentos de preocupação, medo e tensão. Embora essa reação seja intrínseca à nossa natureza, ela pode tornar-se prejudicial quando se intensifica de forma excessiva ou persistente, afetando o quotidiano e o funcionamento psicológico do indivíduo. <br>
 Por sua vez, o bem-estar emocional diz respeito à capacidade de gerir as emoções, enfrentar desafios e manter um equilíbrio psicológico estável, o conceito envolve a satisfação com a vida, a resiliência frente às adversidades e o sentimento de controlo sobre os próprios pensamentos e emoções. Um elevado nível de bem-estar emocional está frequentemente associado a uma melhor qualidade de vida, relações interpessoais enriquecedoras e maior produtividade em diversas esferas da vida. <br>
 
-A interação entre ansiedade e bem-estar emocional revela-se complexa e multifacetada. Enquanto um determinado grau de ansiedade pode funcionar como um estímulo para a motivação e o desempenho, a sua presença crónica e elevada tende a comprometer o equilíbrio emocional, prejudicando a saúde mental do indivíduo. Diversos fatores, como o ambiente familiar, o contexto social, o nível de stress e os hábitos de vida, exercem uma influência significativa na regulação da ansiedade e na promoção do bem-estar. </p><br>
+A interação entre ansiedade e bem-estar emocional revela-se complexa e multifacetada. Enquanto um determinado grau de ansiedade pode funcionar como um estímulo para a motivação e o desempenho, a sua presença crónica e elevada tende a comprometer o equilíbrio emocional, prejudicando a saúde mental do indivíduo. Diversos fatores, como o ambiente familiar, o contexto social, o nível de stress e os hábitos de vida, exercem uma influência significativa na regulação da ansiedade e na promoção do bem-estar. </p>
 
 <p>Observa-se que, nos últimos anos, o fenômeno da ansiedade tem recebido atenção crescente, sobretudo entre os jovens. Questões como o uso intensivo das redes sociais, a pressão no âmbito académico e profissional, bem como a instabilidade socioeconómica, são apontadas como contribuintes para o aumento dos níveis de ansiedade na sociedade contemporânea. <br>
 Nesse sentido, a promoção do bem-estar emocional passa pela implementação de estratégias eficazes de gestão do stress. A prática regular de exercício físico, a adoção de hábitos de vida saudáveis, o fortalecimento das redes de apoio e o desenvolvimento de competências emocionais são fundamentais para a melhoria da saúde mental. Além disso, a conscientização acerca da importância do cuidado com a saúde psicológica, aliada à disponibilização de recursos de apoio, reveste-se de caráter indispensável para auxiliar os indivíduos a lidar com a ansiedade e, assim, alcançar uma vida mais plena e equilibrada.</p>
@@ -252,7 +252,6 @@ ftab_sexo
 
 <br>
 
-</div>
 
 ```{r, echo=FALSE,include=TRUE}
 plot_ciclo <- ggplot(bd, aes(x = factor(cicloescolar))) +
@@ -273,7 +272,7 @@ plot_idade <- ggplot(bd, aes(x = P3)) +
     breaks = seq(floor(min(bd$P3)), ceiling(max(bd$P3))),  # Rótulos em inteiros
     labels = seq(floor(min(bd$P3)), ceiling(max(bd$P3)))
   ) +
-  labs(title = "Distribuição de Idades (Valores Inteiros)", x = "Idade", y = "Contagem") +
+  labs(title = "Distribuição de Idades", x = "Idade", y = "Contagem") +
   theme_minimal()
 
 # Combinar os gráficos
@@ -321,7 +320,7 @@ ftab_obj
 <h3>**2. ENQUADRAMENTO SOCIAL-DEMOGRÁFICO**</h3>
 
 
-</div>
+
 ```{r, include=TRUE, echo=FALSE}
 valores <- as.numeric(bd$satisfacao_vida)
 h <- hist(valores,
@@ -334,6 +333,7 @@ h <- hist(valores,
 ```
 
 
+<h3>**3. Ansiedade**</h3>
 
 
 
