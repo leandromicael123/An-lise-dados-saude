@@ -94,12 +94,15 @@ output:
 ```
 
 </head>
+
 ```{r setup, include=FALSE, echo=FALSE}
 library(DescTools)
 library(ggplot2)
 library(flextable)
 library(descr)
 library(gridExtra)
+library(magrittr)
+library(officer) 
 
 #Importar os ficheiros do Excel
 Sys.setlocale("LC_ALL", "Portuguese_Portugal.UTF-8")
@@ -144,13 +147,12 @@ bd$AF_Q554[is.na(bd$AF_Q554)] <- median(bd$AF_Q554, na.rm = TRUE)
 ::: {.imag style="text-align:center"}
 ![](https://mostra.caerus.pt/wp-content/uploads/2021/04/ISCTE_Logo.png)
 :::
+
 <hr>
 
-<h1 style="font-size: 40px;">**RELATÓRIO - CASO PRÁTICO - AMBIENTE 10**</h1>
+<h1 style="font-size: 40px;">
 
-
-<p style="text-align:center;font-size: 15px;">Março de 2025</p>
-
+**RELATÓRIO - CASO PRÁTICO - AMBIENTE 10**
 
 </h1>
 
@@ -159,6 +161,15 @@ bd$AF_Q554[is.na(bd$AF_Q554)] <- median(bd$AF_Q554, na.rm = TRUE)
 Março de 2025
 
 </p>
+
+</h1>
+
+<p style="text-align:center;font-size: 15px;">
+
+Março de 2025
+
+</p>
+
 <br>
 
 <h4>Trabalho realizado por:</h4>
@@ -166,14 +177,23 @@ Março de 2025
 <ul>
 
 <td>Leandro Bernardo, nº 125293</td>
+
 <br>
+
 <td>Paula Relvas, nº 43905</td>
+
 <br>
+
 <td>Pedro Gonçalves, nº 130668</td>
+
 <br>
+
 <td>Ricardo Fonseca, nº 130650</td>
+
 <br>
+
 <td>Tiago Oeber, nº 130667</td>
+
 <br>
 
 O presente documento foi construído para a Unidade Curricular Análise de Exploratória de Dados, da Licenciatura em Ciência de Dados do Iscte-IUL.
@@ -186,13 +206,19 @@ O presente documento foi construído para a Unidade Curricular Análise de Explo
 
 <br>
 
-<p>A ansiedade e o bem-estar emocional constituem dois pilares essenciais para a compreensão da saúde mental. A ansiedade, enquanto resposta natural do organismo a situações de stress ou perigo, manifesta-se através de sentimentos de preocupação, medo e tensão. Embora essa reação seja intrínseca à nossa natureza, ela pode tornar-se prejudicial quando se intensifica de forma excessiva ou persistente, afetando o quotidiano e o funcionamento psicológico do indivíduo. <br>
+<p>
 
 A ansiedade e o bem-estar emocional constituem dois pilares essenciais para a compreensão da saúde mental. A ansiedade, enquanto resposta natural do organismo a situações de stress ou perigo, manifesta-se através de sentimentos de preocupação, medo e tensão. Embora essa reação seja intrínseca à nossa natureza, ela pode tornar-se prejudicial quando se intensifica de forma excessiva ou persistente, afetando o quotidiano e o funcionamento psicológico do indivíduo. <br>
-Por sua vez, o bem-estar emocional diz respeito à capacidade de gerir as emoções, enfrentar desafios e manter um equilíbrio psicológico estável, o conceito envolve a satisfação com a vida, a resiliência frente às adversidades e o sentimento de controlo sobre os próprios pensamentos e emoções. Um elevado nível de bem-estar emocional está frequentemente associado a uma melhor qualidade de vida, relações interpessoais enriquecedoras e maior produtividade em diversas esferas da vida. <br>
-A interação entre ansiedade e bem-estar emocional revela-se complexa e multifacetada. Enquanto um determinado grau de ansiedade pode funcionar como um estímulo para a motivação e o desempenho, a sua presença crónica e elevada tende a comprometer o equilíbrio emocional, prejudicando a saúde mental do indivíduo. Diversos fatores, como o ambiente familiar, o contexto social, o nível de stress e os hábitos de vida, exercem uma influência significativa na regulação da ansiedade e na promoção do bem-estar. </p>
+
+A ansiedade e o bem-estar emocional constituem dois pilares essenciais para a compreensão da saúde mental. A ansiedade, enquanto resposta natural do organismo a situações de stress ou perigo, manifesta-se através de sentimentos de preocupação, medo e tensão. Embora essa reação seja intrínseca à nossa natureza, ela pode tornar-se prejudicial quando se intensifica de forma excessiva ou persistente, afetando o quotidiano e o funcionamento psicológico do indivíduo. <br> Por sua vez, o bem-estar emocional diz respeito à capacidade de gerir as emoções, enfrentar desafios e manter um equilíbrio psicológico estável, o conceito envolve a satisfação com a vida, a resiliência frente às adversidades e o sentimento de controlo sobre os próprios pensamentos e emoções. Um elevado nível de bem-estar emocional está frequentemente associado a uma melhor qualidade de vida, relações interpessoais enriquecedoras e maior produtividade em diversas esferas da vida. <br> A interação entre ansiedade e bem-estar emocional revela-se complexa e multifacetada. Enquanto um determinado grau de ansiedade pode funcionar como um estímulo para a motivação e o desempenho, a sua presença crónica e elevada tende a comprometer o equilíbrio emocional, prejudicando a saúde mental do indivíduo. Diversos fatores, como o ambiente familiar, o contexto social, o nível de stress e os hábitos de vida, exercem uma influência significativa na regulação da ansiedade e na promoção do bem-estar.
+
+</p>
+
 A interação entre ansiedade e bem-estar emocional revela-se complexa e multifacetada. Enquanto um determinado grau de ansiedade pode funcionar como um estímulo para a motivação e o desempenho, a sua presença crónica e elevada tende a comprometer o equilíbrio emocional, prejudicando a saúde mental do indivíduo. Diversos fatores, como o ambiente familiar, o contexto social, o nível de stress e os hábitos de vida, exercem uma influência significativa na regulação da ansiedade e na promoção do bem-estar. <br>
-<p>Observa-se que, nos últimos anos, o fenômeno da ansiedade tem recebido atenção crescente, sobretudo entre os jovens. Questões como o uso intensivo das redes sociais, a pressão no âmbito académico e profissional, bem como a instabilidade socioeconómica, são apontadas como contribuintes para o aumento dos níveis de ansiedade na sociedade contemporânea.Nesse sentido, a promoção do bem-estar emocional passa pela implementação de estratégias eficazes de gestão do stress. A prática regular de exercício físico, a adoção de hábitos de vida saudáveis, o fortalecimento das redes de apoio e o desenvolvimento de competências emocionais são fundamentais para a melhoria da saúde mental. Além disso, a conscientização acerca da importância do cuidado com a saúde psicológica, aliada à disponibilização de recursos de apoio, reveste-se de caráter indispensável para auxiliar os indivíduos a lidar com a ansiedade e, assim, alcançar uma vida mais plena e equilibrada.
+
+<p>
+
+Observa-se que, nos últimos anos, o fenômeno da ansiedade tem recebido atenção crescente, sobretudo entre os jovens. Questões como o uso intensivo das redes sociais, a pressão no âmbito académico e profissional, bem como a instabilidade socioeconómica, são apontadas como contribuintes para o aumento dos níveis de ansiedade na sociedade contemporânea.Nesse sentido, a promoção do bem-estar emocional passa pela implementação de estratégias eficazes de gestão do stress. A prática regular de exercício físico, a adoção de hábitos de vida saudáveis, o fortalecimento das redes de apoio e o desenvolvimento de competências emocionais são fundamentais para a melhoria da saúde mental. Além disso, a conscientização acerca da importância do cuidado com a saúde psicológica, aliada à disponibilização de recursos de apoio, reveste-se de caráter indispensável para auxiliar os indivíduos a lidar com a ansiedade e, assim, alcançar uma vida mais plena e equilibrada.
 
 <br>
 
@@ -202,12 +228,12 @@ A interação entre ansiedade e bem-estar emocional revela-se complexa e multifa
 
 <p>O tratamento dos valores omissos iniciou-se com a substituição dos espaços em branco pelo valor 99. No entanto, para aplicar uma abordagem mais adequada, esses valores foram temporariamente convertidos para null e, em seguida, substituídos pela mediana. Esse método foi utilizado para as variáveis relacionadas com a ansiedade, como "v38_ansiedade", "v40_ansiedade", "v43_ansiedade", "v45_ansiedade", "v51_ansiedade", "v55_ansiedade", "v56_ansiedade" e "AF_Q554", que apresentavam um número significativo de valores ausentes. A substituição pela mediana permitiu minimizar distorções nos dados e garantir uma representação mais fiel da distribuição original das respostas.</p>
 
-
 <br> <br>
 
 <h3>**2. ENQUADRAMENTO SOCIAL-DEMOGRÁFICO**</h3>
 
 <br>
+
 <p>De modo a pudermos ter um conhecimento mais aprofundado dos dados disponibilizados pelos 1125 inquiridos, foi feito um enquadramento social-demográfico. Para tal, foram feitos estudos em relação ao género, idade e ciclo escolar.</p>
 
 <p>Em termos de distribuição por género: 571 das pessoas inquiridas identificaram-se como mulheres, sendo então 45% da amostra e 514 identificaram-se como homens, correspondendo a 46% da amostra, 15 pessoas responderam outro repesentam 1% e 25 pessoas representam 2% (Tabela 1).</p>
@@ -231,7 +257,6 @@ mean(bd$P3)
 
 <br>
 
-
 ```{r, include=TRUE, echo=FALSE}
 ftab_sexo
 ```
@@ -242,7 +267,6 @@ ftab_sexo
 
 </p>
 
-
 <br> <br>
 
 <p>A distribuição dos estudantes por ciclo escolar e idade indica que aproximadamente 600 alunos frequentam o ensino secundário, representando a maioria da amostra, Observa-se que a maioria dos estudantes tem entre 12 e 17 anos, com uma maior concentração nas idades de 13 e 14 anos. (**Gráfico 1**)</p>
@@ -250,6 +274,7 @@ ftab_sexo
 <p>A distribuição etária dos estudantes apresenta uma média de 14,55 anos e uma mediana de 14 anos, sugerindo um equilíbrio relativo, apesar de uma leve assimetria positiva devido a idades mais elevadas. A variabilidade é moderada, com um desvio padrão de 1,98 anos e uma variância de 3,93, indicando que a maioria dos alunos tem entre 12,57 e 16,53 anos. A amplitude total (11 a 20 anos) reflete a diversidade etária típica de ciclos educacionais distintos. Os quartis mostram que 25% dos estudantes têm até 13 anos e 75% até 16 anos, com um intervalo interquartil de 3 anos, sugerindo uma distribuição relativamente concentrada. A presença de idades fora da faixa convencional pode estar associada a retenção, aceleração ou matrículas tardias (**Tabela 2**).</p>
 
 <br>
+
 <center>
 
 ```{r, include=TRUE, echo=FALSE}
@@ -277,17 +302,17 @@ plot_idade <- ggplot(bd, aes(x = P3)) +
 # Combinar os gráficos
 grid.arrange(plot_ciclo, plot_idade, ncol = 2)
 ```
-</center>
 
+</center>
 
 <p>
 
-<center>**Gráfico 1 ** - Distribuição por ciclo escolar e Idade</center>
+<center>**Gráfico 1** - Distribuição por ciclo escolar e Idade</center>
 
 </p>
 
+<br> <br>
 
-<br> <br> 
 ```{r, include=TRUE, echo=FALSE}
 # Tabela com os dados descritivos
 N <- nrow(bd)
@@ -310,16 +335,27 @@ ftab_obj <- color(ftab_obj, color = "white", part = "header")
 
 ftab_obj
 ```
+
 <p>
 
-<center>**Tabela 2 ** - Distribuição por ciclo escolar e Idade</center>
+<center>**Tabela 2** - Distribuição por ciclo escolar e Idade</center>
 
 </p>
 
 <h3>**3. Ansiedade e Felicidade**</h3>
 
+<p>
 
-</div>
+A satisfação com a vida está diretamente ligada ao bem-estar emocional e pode ser influenciada por níveis de ansiedade. Pessoas com maior ansiedade tendem a perceber a vida de forma mais negativa, enquanto aquelas com menor ansiedade costumam relatar maior satisfação.
+
+A análise dos dados mostra que a satisfação com a vida se concentra em valores próximos a 7, indicando uma percepção globalmente positiva. A média de 7,15 e a mediana de 7,00 (tabela 3) sugerem que a maioria dos participantes avalia a própria vida de forma moderadamente elevada.
+
+O desvio padrão de 1,86 indica uma variação moderada, com a maioria das respostas situadas entre 6 e 8. A escala utilizada varia de 0, representando a pior vida possível, a 10, que denota a melhor, permitindo uma avaliação ampla das percepções individuais. O gráfico (gráfico 2) reforça essa tendência, com um pico de respostas na faixa central da escala. Embora minoritárias, respostas próximas de 0 evidenciam a existência de grupos em maior vulnerabilidade. Apesar das diferenças individuais, há um consenso geral de satisfação moderada a elevada entre os participantes.
+
+Além disso, uma ANOVA unidirecional foi realizada para avaliar a diferença nas idades (P3) em função dos níveis de satisfação com a vida. Os resultados indicaram um efeito estatisticamente significativo da satisfação sobre a idade (F(1, 1123) = 28.89, p \< 0.0001), embora a magnitude do efeito seja modesta (η² ≈ 0.025). Isso sugere que indivíduos com diferentes níveis de satisfação tendem a ter idades médias distintas, ainda que a proporção da variância explicada seja pequena.
+
+</p>
+
 ```{r, include=TRUE, echo=FALSE}
 valores <- as.numeric(bd$satisfacao_vida)
 h <- hist(valores,
@@ -328,8 +364,10 @@ h <- hist(valores,
           ylab = "Frequência", 
           col = "lightblue", 
           )
-
+summary(aov(bd$P3~ bd$satisfacao_vida, data = bd))
 ```
+
+Os inquiridos mostram-se geralmente satisfeitos com a vida com uma média de 7,15
 
 ```{r, include=TRUE, echo=FALSE}
 # Tabela com os dados descritivos
@@ -353,72 +391,10 @@ ftab_obj <- color(ftab_obj, color = "white", part = "header")
 ftab_obj
 ```
 
-
 <h3>**3. Ansiedade**</h3>
 
 ```{r, include=TRUE, echo=FALSE}
-#boxplot
-boxplot(valores, 
-        main = "Boxplot da Satisfação com a Vida", 
-        ylab = "Satisfação com a Vida", 
-        col = "lightgreen")
-```
-
-
-```{r, include=TRUE, echo=FALSE}
-# Definir os 7 títulos (ou sintomas)
-specie <- c(
-  rep("A", 4),  # 4 repetições para o título "A"
-  rep("B", 4),  # 4 repetições para o título "B"
-  rep("C", 4),  # 4 repetições para o título "C"
-  rep("D", 4),  # 4 repetições para o título "D"
-  rep("E", 4),  # 4 repetições para o título "E"
-  rep("F", 4),  # 4 repetições para o título "F"
-  rep("G", 4)   # 4 repetições para o título "G"
-)
-
-# Verificar o comprimento de 'specie'
-length(specie)  # Deve retornar 28 (7 títulos * 4 géneros)
-
-# Verifique se bd$P3 existe e não está vazio
-if (exists("bd") && !is.null(bd$P3)) {
-  # Replicar 'bd$P3' para corresponder ao comprimento de 'specie' (4 géneros por título)
-  condition <- rep(bd$P3, length.out = length(specie))
-} else {
-  stop("bd$P3 não está disponível ou está vazio.")
-}
-
-# Calcular as médias das colunas de ansiedade
-mean_values <- c(
-  mean(bd$v38_ansiedade, na.rm = TRUE),
-  mean(bd$v40_ansiedade, na.rm = TRUE),
-  mean(bd$v43_ansiedade, na.rm = TRUE),
-  mean(bd$v45_ansiedade, na.rm = TRUE),
-  mean(bd$v51_ansiedade, na.rm = TRUE),
-  mean(bd$v55_ansiedade, na.rm = TRUE),
-  mean(bd$v56_ansiedade, na.rm = TRUE)
-)
-
-# Replicar as médias para corresponder ao comprimento de 'specie'
-value <- rep(mean_values, length.out = length(specie))
-
-# Criar o dataframe
-data <- data.frame(specie, condition, value)
-
-# Verifique a estrutura dos dados
-str(data)
-
-# Criar o gráfico de barras agrupadas
-ggplot(data, aes(fill = condition, y = value, x = specie)) + 
-  geom_bar(stat = "identity", position = "dodge") +  # Usar barras agrupadas
-  labs(
-    title = "Níveis de Ansiedade por Idade",
-    x = "Sintomas",
-    y = "Média de Ansiedade"
-  ) +
-  theme_minimal()  # Um tema mais simples
-
-
+boxplot(bd$P3 ~ bd$satisfacao_vida, col = "lightblue", main = "Idade por Satisfação com a Vida")
 ```
 
 uni
@@ -437,7 +413,7 @@ specie <- c(
 )
 
 # Verificar o comprimento de 'specie'
-length(specie)  # Deve retornar 28 (7 títulos * 4 géneros)
+
 
 # Replicar 'bd$Género' para corresponder ao comprimento de 'specie' (4 géneros por título)
 condition <- rep(bd$Género, length.out = length(specie))
@@ -458,7 +434,96 @@ ggplot(data, aes(fill = condition, y = value, x = specie)) +
   labs(
     title = "Níveis de Ansiedade por Gênero",
     x = "Sintomas",
-    y = "Média de Ansiedade"
+    y = "Média das respostas"
   ) 
 
 ```
+
+```{r,echo=FALSE}
+
+
+# Criar o dataframe
+sintomas_df <- data.frame(
+  Sintoma = c("A", "B", "C", "D", "E", "F", "G"),
+  Descrição = c(
+    "Senti a minha boca seca.",
+    "Senti dificuldades em respirar.",
+    "Senti-me trémulo (por exemplo sem forças nas pernas).",
+    "Preocupei-me com situações em que podia entrar em pânico e fazer figura ridícula.",
+    "Senti-me quase a entrar em pânico.",
+    "Senti alterações no meu coração sem fazer exercício físico.",
+    "Senti-me assustado sem ter uma boa razão para isso."
+  )
+)
+
+# Criar a tabela com formatação
+sintomas_table <- flextable(sintomas_df) %>% 
+  set_header_labels(        # Ajustar os nomes das colunas
+    Sintoma = "Sintoma",
+    Descrição = "Descrição dos Sintomas"
+  ) %>% 
+  bg(part = "header", bg = "#1f78b4", j = 1:2) %>% 
+  color(part = "header", color = "white", j = 1:2) %>% 
+  bg(part = "body", bg = "#f0f0f0", i = seq(1, 7, by = 2)) %>% 
+  add_header_lines("Sintomas de Ansiedade - Legendas") %>% 
+  bold(part = "header", bold = TRUE) %>% 
+  fontsize(part = "header", size = 12) %>% 
+  align(align = "left", part = "all") %>% 
+  set_table_properties(width = 1) %>% 
+  theme_booktabs() %>% 
+  autofit()
+
+# Adicionar bordas
+sintomas_table <- border_outer(sintomas_table, part = "all", border = fp_border(color = "#1f78b4", width = 1))
+
+# Visualizar a tabela
+sintomas_table
+```
+
+<p>
+
+A matriz de correlação revela relações significativas entre os sintomas de ansiedade e a satisfação com a vida, utilizando coeficientes de Spearman (ρ). Sintomas como "Quase pânico" e "Coração acelerado" apresentam uma forte correlação positiva (ρ ≈ 0,72), sugerindo que ocorrem frequentemente em conjunto.
+
+Por outro lado, a satisfação com a vida demonstra correlações negativas moderadas com a maioria dos sintomas de ansiedade (ρ entre -0,3 e -0,5), indicando um possível efeito protetor. O sintoma "Medo sem motivo" apresenta a associação mais fraca (ρ ≈ -0,18), sugerindo maior independência em relação à satisfação com a vida.
+
+Correlações estatisticamente significativas (p \< 0,05) reforçam a robustez dos achados, indicando uma relação consistente entre menor satisfação e maior ansiedade. Conclui-se que a satisfação com a vida está inversamente relacionada à intensidade dos sintomas de ansiedade, com exceção de manifestações menos racionais de medo. Esses resultados destacam a importância de estratégias que promovam o bem-estar psicológico para mitigar os efeitos da ansiedade.
+
+</p>
+
+```{r, echo=FALSE}
+
+# Criar um dataframe reduzido apenas com as variáveis de interesse
+dados <- bd[, c("v38_ansiedade", "v40_ansiedade", "v43_ansiedade", 
+               "v45_ansiedade", "v51_ansiedade", "v55_ansiedade", 
+               "v56_ansiedade", "satisfacao_vida")]
+
+# Verificar estrutura
+str(dados)
+# Instalar pacotes se necessário
+if(!require("Hmisc")) install.packages("Hmisc")
+if(!require("corrplot")) install.packages("corrplot")
+
+library(Hmisc)
+library(corrplot)
+
+# Calcular matriz de correlação usando Spearman (para dados ordinais)
+correlacoes <- rcorr(as.matrix(dados), type = "spearman")
+
+# Visualizar matriz de correlação
+corrplot(correlacoes$r, 
+         method = "color",
+         type = "upper",
+         tl.col = "black",
+         tl.srt = 45,
+         p.mat = correlacoes$P,
+         sig.level = 0.05,
+         insig = "blank",
+         diag = FALSE)
+
+```
+
+<h3>**3. Conlusão**</h3>
+
+<p>
+
+</p>
