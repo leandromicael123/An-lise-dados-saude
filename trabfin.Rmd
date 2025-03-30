@@ -160,7 +160,9 @@ Nesse sentido, a promoção do bem-estar emocional passa pela implementação de
 
 <br>
 
-<p> O tratamento dos valores omissos fez-se em vários passos. Primeiro, os valores em branco foram alterados para um código (99) que é representativo das mesmas. Para a nossa análise, reparámos que as variáveis “Onde vive”, “Transportes públicos”, “Produtos pelo ambiente”, “Apagar as luzes” e “Fechar a torneira” tinham uma grande quantidade de respostas nulas, por esse motivo realizou-se uma imputação dos valores inexistentes pela mediana das respostas.
+<p> O tratmento dos valores omissos começou com tornar os valores em brancos para 99, no R nós passamos os valores em null, todas as variaveis relacionadas com ansiedade como "v38_ansiedade", "v40_ansiedade", "v43_ansiedade","v45_ansiedade","v51_ansiedade","v55_ansiedade","v56_ansiedade"
+
+O tratamento dos valores omissos fez-se em vários passos. Primeiro, os valores em branco foram alterados para um código (99) que é representativo das mesmas. Para a nossa análise, reparámos que as variáveis “Onde vive”, “Transportes públicos”, “Produtos pelo ambiente”, “Apagar as luzes” e “Fechar a torneira” tinham uma grande quantidade de respostas nulas, por esse motivo realizou-se uma imputação dos valores inexistentes pela mediana das respostas.
 
 Neste ponto foram atribuídos valores numéricos a variáveis de texto e valores texto a variáveis numéricas, sendo que no caso de resposta em branco foi atribuído anteriormente o valor 99.</p>
 
@@ -203,74 +205,13 @@ bd$AF_Q554[is.na(bd$AF_Q554)] <- median(bd$AF_Q554, na.rm = TRUE)
 
 Valores descritivos
 
-```{r}
-#Frequencia de idades
-
-valores <- as.numeric(bd$P3)
-
-h <- hist(valores,
-          main = "Distribuição da idade", 
-          xlab = "P3", 
-          ylab = "Frequência", 
-          col = "green", 
-          )
-```
-
-```{r}
-#Tabela entre idades e ansiedades
-library(ggplot2)
-
-# Definir os 7 títulos (ou sintomas)
-specie <- c(
-  rep("A", 4),  # 4 repetições para o título "A"
-  rep("B", 4),  # 4 repetições para o título "B"
-  rep("C", 4),  # 4 repetições para o título "C"
-  rep("D", 4),  # 4 repetições para o título "D"
-  rep("E", 4),  # 4 repetições para o título "E"
-  rep("F", 4),  # 4 repetições para o título "F"
-  rep("G", 4)   # 4 repetições para o título "G"
-)
-
-# Verificar o comprimento de 'specie'
-length(specie)  # Deve retornar 28 (7 títulos * 4 géneros)
-
-# Replicar 'bd$Género' para corresponder ao comprimento de 'specie' (4 géneros por título)
-condition <- rep(bd$P3, length.out = length(specie))
-
-# Definir as médias das colunas de ansiedade
-mean_values <- c(
-  mean(bd$v38_ansiedade),
-  mean(bd$v40_ansiedade),
-  mean(bd$v43_ansiedade),
-  mean(bd$v45_ansiedade),
-  mean(bd$v51_ansiedade),
-  mean(bd$v55_ansiedade),
-  mean(bd$v56_ansiedade)
-)
-
-# Replicar as médias para corresponder ao comprimento de 'specie'
-value <- rep(mean_values, length.out = length(specie))
-
-# Criar o dataframe
-data <- data.frame(specie, condition, value)
-
-# Criar o gráfico de barras agrupadas
-ggplot(data, aes(fill = condition, y = value, x = specie)) + 
-  geom_bar(position = "dodge", stat = "identity") +
-  labs(
-    title = "Níveis de Ansiedade por Idade",
-    x = "Sintomas",
-    y = "Média de Ansiedade"
-  ) 
-```
-
-
 ```{r, include=FALSE, echo=FALSE}
 library(DescTools)
 library(flextable)
 library(descr)
 valores <- as.numeric(bd$satisfacao_vida)
 descr(valores)
+
 ```
 
 ```{r, include=TRUE, echo=FALSE}
