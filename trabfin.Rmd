@@ -231,7 +231,7 @@ ftab_sexo <- color(ftab_sexo, color = "white", part = "header")
 mean(bd$P3)
 ```
 
-
+<br>
 
 
 ```{r echo=FALSE}
@@ -245,11 +245,11 @@ ftab_sexo
 </p>
 
 
-<br> <br> <br>
+<br> <br>
 
-<p>A distribuição dos estudantes por ciclo escolar e idade indica que aproximadamente 600 alunos frequentam o ensino secundário, representando a maioria da amostra, Observa-se que a maioria dos estudantes tem entre 12 e 17 anos, com uma maior concentração nas idades de 13 e 14 anos. (**Gráfico 1**)
+<p>A distribuição dos estudantes por ciclo escolar e idade indica que aproximadamente 600 alunos frequentam o ensino secundário, representando a maioria da amostra, Observa-se que a maioria dos estudantes tem entre 12 e 17 anos, com uma maior concentração nas idades de 13 e 14 anos. (**Gráfico 1**)</p>
 
-A distribuição etária dos estudantes apresenta uma média de 14,55 anos e uma mediana de 14 anos, sugerindo um equilíbrio relativo, apesar de uma leve assimetria positiva devido a idades mais elevadas. A variabilidade é moderada, com um desvio padrão de 1,98 anos e uma variância de 3,93, indicando que a maioria dos alunos tem entre 12,57 e 16,53 anos. A amplitude total (11 a 20 anos) reflete a diversidade etária típica de ciclos educacionais distintos. Os quartis mostram que 25% dos estudantes têm até 13 anos e 75% até 16 anos, com um intervalo interquartil de 3 anos, sugerindo uma distribuição relativamente concentrada. A presença de idades fora da faixa convencional pode estar associada a retenção, aceleração ou matrículas tardias..</p>
+<p>A distribuição etária dos estudantes apresenta uma média de 14,55 anos e uma mediana de 14 anos, sugerindo um equilíbrio relativo, apesar de uma leve assimetria positiva devido a idades mais elevadas. A variabilidade é moderada, com um desvio padrão de 1,98 anos e uma variância de 3,93, indicando que a maioria dos alunos tem entre 12,57 e 16,53 anos. A amplitude total (11 a 20 anos) reflete a diversidade etária típica de ciclos educacionais distintos. Os quartis mostram que 25% dos estudantes têm até 13 anos e 75% até 16 anos, com um intervalo interquartil de 3 anos, sugerindo uma distribuição relativamente concentrada. A presença de idades fora da faixa convencional pode estar associada a retenção, aceleração ou matrículas tardias (**Tabela 2**).</p>
 
 <br>
 
@@ -283,8 +283,6 @@ grid.arrange(plot_ciclo, plot_idade, ncol = 2)
 ```
 
 
-<div>
-
 
 <p>
 
@@ -294,9 +292,9 @@ grid.arrange(plot_ciclo, plot_idade, ncol = 2)
 
 
 <br> <br> 
-```{r}
+```{r,echo=FALSE}
 # Tabela com os dados descritivos
-
+N <- nrow(bd)
 Média <- round(mean(bd$P3, na.rm = TRUE),2)
 Mediana <- round(median(bd$P3, na.rm = TRUE),2)
 DesPad <-round(sd(bd$P3, na.rm = TRUE),2)
@@ -307,7 +305,7 @@ Q1 <- round(quantile(bd$P3, 0.25, na.rm = TRUE),2)
 Q3 <- round(quantile(bd$P3, 0.75, na.rm = TRUE),2)
 
 Estatisticas_Descritivas <- c("N", "Média", "Mediana", "Desv. Pad.", "Vari.", "Min", "Max", "Q1", "Q3")
-Valores_Idades <- c( Média, Mediana, DesPad, Vari, Min, Max, Q1, Q3)
+Valores_Idades <- c(N, Média, Mediana, DesPad, Vari, Min, Max, Q1, Q3)
 Tabela <- data.frame(Estatisticas_Descritivas, Valores_Idades)
 
 ftab_obj <- flextable(Tabela)
@@ -316,6 +314,11 @@ ftab_obj <- color(ftab_obj, color = "white", part = "header")
 
 ftab_obj
 ```
+<p>
+
+<center>**Tabela 2 ** - Distribuição por ciclo escolar e Idade</center>
+
+</p>
 
 </div>
 ```{r, include=TRUE, echo=FALSE}
