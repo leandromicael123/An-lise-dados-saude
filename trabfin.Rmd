@@ -99,6 +99,7 @@ library(DescTools)
 library(ggplot2)
 library(flextable)
 library(descr)
+library(gridExtra)
 
 #Importar os ficheiros do Excel
 Sys.setlocale("LC_ALL", "Portuguese_Portugal.UTF-8")
@@ -258,6 +259,28 @@ comportamentos e atitudes relativas ao ambiente variam (**Tabela
 </div>
 
 Histograma de frequências absolutas
+```{r}
+# Gráfico de Barras para Ciclo Escolar (3 e 4)
+plot_ciclo <- ggplot(bd, aes(x = factor(cicloescolar))) +  # Converter para fator temporariamente
+  geom_bar(fill = c("#1f78b4", "#33a02c")) +  # Cores diretas para 3 e 4
+  scale_x_discrete(labels = c("3" = "3º Ciclo", "4" = "Secundário")) +  # Rótulos claros
+  labs(title = "Ciclo Escolar",
+       x = "",
+       y = "Contagem") +
+  theme_minimal()
+
+# Gráfico de Densidade para Idade (P3)
+plot_idade <- ggplot(bd, aes(x = P3)) +
+  geom_density(fill = "#e31a1c", alpha = 0.5) +
+  labs(title = "Distribuição de Idade",
+       x = "Idade",
+       y = "Densidade") +
+  theme_minimal()
+
+# Combinar os gráficos
+grid.arrange(plot_ciclo, plot_idade, ncol = 2)
+
+```
 
 ```{r, include=TRUE, echo=FALSE}
 valores <- as.numeric(bd$satisfacao_vida)
