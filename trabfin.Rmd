@@ -99,6 +99,7 @@ library(DescTools)
 library(ggplot2)
 library(flextable)
 library(descr)
+library(summarytools)
 #Importar os ficheiros do Excel
 Sys.setlocale("LC_ALL", "Portuguese_Portugal.UTF-8")
 library(openxlsx)
@@ -261,7 +262,7 @@ h <- hist(valores,
 
 ```
 
-```{r}
+```{r, include=TRUE, echo=FALSE}
 valores <- as.numeric(bd$P3)
 h <- hist(valores,
           main = "Distribuição das Idades", 
@@ -271,8 +272,34 @@ h <- hist(valores,
           )
 ```
 
-
 ```{r}
+Age<-table(bd$P3)
+
+## 2. Tabela com os dados descritivos
+
+N <- round(nrow(bd))
+Média <- round(mean(Age, na.rm = TRUE))
+Mediana <- round(median(Age, na.rm = TRUE))
+DesPad <-round(sd(Age, na.rm = TRUE))
+Vari <- round(var(Age, na.rm = TRUE))
+Min <- round(min(Age, na.rm = TRUE))
+Max <- round(max(Age, na.rm = TRUE))
+Q1 <- round(quantile(Age, 0.25, na.rm = TRUE))
+Q3 <- round(quantile(Age, 0.75, na.rm = TRUE))
+
+Estatisticas_Descritivas <- c("N", "Média", "Mediana", "Desv. Pad.", "Vari.", "Min", "Max", "1º Q", "3º Q")
+Valores_Idades <- c(N, Média, Mediana, DesPad, Vari, Min, Max, Q1, Q3)
+Tabela <- data.frame(Estatisticas_Descritivas, Valores_Idades)
+
+ftab_obj <- flextable(Tabela)
+ftab_obj <- bg(ftab_obj, bg = "#3895D3", part = "header")
+ftab_obj <- color(ftab_obj, color = "white", part = "header")
+
+ftab_obj
+```
+
+
+```{r, include=TRUE, echo=FALSE}
 # Definir os 7 títulos (ou sintomas)
 specie <- c(
   rep("A", 4),  # 4 repetições para o título "A"
@@ -376,6 +403,4 @@ ggplot(data, aes(fill = condition, y = value, x = specie)) +
     x = "Sintomas",
     y = "Média de Ansiedade"
   ) 
-
-
 ```
