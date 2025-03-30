@@ -330,6 +330,28 @@ h <- hist(valores,
 
 ```
 
+```{r, include=TRUE, echo=FALSE}
+# Tabela com os dados descritivos
+Média <- round(mean(bd$satisfacao_vida, na.rm = TRUE),2)
+Mediana <- round(median(bd$satisfacao_vida, na.rm = TRUE),2)
+DesPad <-round(sd(bd$satisfacao_vida, na.rm = TRUE),2)
+Vari <- round(var(bd$satisfacao_vida, na.rm = TRUE),2)
+Min <- round(min(bd$satisfacao_vida, na.rm = TRUE),2)
+Max <- round(max(bd$satisfacao_vida, na.rm = TRUE),2)
+Q1 <- round(quantile(bd$satisfacao_vida, 0.25, na.rm = TRUE),2)
+Q3 <- round(quantile(bd$satisfacao_vida, 0.75, na.rm = TRUE),2)
+
+Estatisticas_Descritivas <- c("Média", "Mediana", "Desv. Pad.", "Vari.", "Min", "Max", "Q1", "Q3")
+Satisfação_vida <- c(Média, Mediana, DesPad, Vari, Min, Max, Q1, Q3)
+Tabela <- data.frame(Estatisticas_Descritivas, Satisfação_vida)
+
+ftab_obj <- flextable(Tabela)
+ftab_obj <- bg(ftab_obj, bg = "#3895D3", part = "header")
+ftab_obj <- color(ftab_obj, color = "white", part = "header")
+
+ftab_obj
+```
+
 
 ```{r, include=TRUE, echo=FALSE}
 #boxplot
