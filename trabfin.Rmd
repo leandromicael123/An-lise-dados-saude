@@ -199,13 +199,14 @@ Nesse sentido, a promoção do bem-estar emocional passa pela implementação de
 <p>O tratamento dos valores omissos iniciou-se com a substituição dos espaços em branco pelo valor 99. No entanto, para aplicar uma abordagem mais adequada, esses valores foram temporariamente convertidos para null e, em seguida, substituídos pela mediana. Esse método foi utilizado para as variáveis relacionadas com a ansiedade, como "v38_ansiedade", "v40_ansiedade", "v43_ansiedade", "v45_ansiedade", "v51_ansiedade", "v55_ansiedade" e "v56_ansiedade", que apresentavam um número significativo de valores ausentes. A substituição pela mediana permitiu minimizar distorções nos dados e garantir uma representação mais fiel da distribuição original das respostas.</p>
 
 
+<br> <br>
 
-Valores descritivos
+<h3>**2. ENQUADRAMENTO SOCIAL-DEMOGRÁFICO**</h3>
+
+<br>
 
 ```{r, include=FALSE, echo=FALSE}
-library(DescTools)
-library(flextable)
-library(descr)
+Gen <- c(unique(bd$Género))
 valores <- as.numeric(bd$satisfacao_vida)
 descr(valores)
 
