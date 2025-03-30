@@ -99,7 +99,7 @@ library(DescTools)
 library(ggplot2)
 library(flextable)
 library(descr)
-library(summarytools)
+
 #Importar os ficheiros do Excel
 Sys.setlocale("LC_ALL", "Portuguese_Portugal.UTF-8")
 library(openxlsx)
@@ -110,10 +110,15 @@ names(bd)[4] = "valor_genero"
 names(bd)[9] = "satisfacao_vida"
 paste("Existem",sum(bd$satisfacao_vida == 99),"valores omissos")
 media_antes <- mean(bd$satisfacao_vida)
+
+n_amostra <- nrow(bd)
+print(n_amostra)
+
 bd$satisfacao_vida[bd$satisfacao_vida == 99] <- NA
 bd$satisfacao_vida[is.na(bd$satisfacao_vida)] <- median(bd$satisfacao_vida, na.rm = TRUE)
 media_depois <- mean(bd$satisfacao_vida)
 paste("Média antes de inputar os valores omissos:",round(media_antes,2),"\n Média depois de inputar os valores omissos com mediana", round(media_depois,2))
+
 #Lidar com os valores omissos das outras variaveis
 bd$v38_ansiedade[bd$v38_ansiedade == 99] <- NA
 bd$v38_ansiedade[is.na(bd$v38_ansiedade)] <- median(bd$v38_ansiedade, na.rm = TRUE)
@@ -188,8 +193,7 @@ Por sua vez, o bem-estar emocional diz respeito à capacidade de gerir as emoç�
 A interação entre ansiedade e bem-estar emocional revela-se complexa e multifacetada. Enquanto um determinado grau de ansiedade pode funcionar como um estímulo para a motivação e o desempenho, a sua presença crónica e elevada tende a comprometer o equilíbrio emocional, prejudicando a saúde mental do indivíduo. Diversos fatores, como o ambiente familiar, o contexto social, o nível de stress e os hábitos de vida, exercem uma influência significativa na regulação da ansiedade e na promoção do bem-estar. <br>
 
 Observa-se que, nos últimos anos, o fenômeno da ansiedade tem recebido atenção crescente, sobretudo entre os jovens. Questões como o uso intensivo das redes sociais, a pressão no âmbito académico e profissional, bem como a instabilidade socioeconómica, são apontadas como contribuintes para o aumento dos níveis de ansiedade na sociedade contemporânea. <br>
-
-<p>Nesse sentido, a promoção do bem-estar emocional passa pela implementação de estratégias eficazes de gestão do stress. A prática regular de exercício físico, a adoção de hábitos de vida saudáveis, o fortalecimento das redes de apoio e o desenvolvimento de competências emocionais são fundamentais para a melhoria da saúde mental. Além disso, a conscientização acerca da importância do cuidado com a saúde psicológica, aliada à disponibilização de recursos de apoio, reveste-se de caráter indispensável para auxiliar os indivíduos a lidar com a ansiedade e, assim, alcançar uma vida mais plena e equilibrada.</p></p>
+Nesse sentido, a promoção do bem-estar emocional passa pela implementação de estratégias eficazes de gestão do stress. A prática regular de exercício físico, a adoção de hábitos de vida saudáveis, o fortalecimento das redes de apoio e o desenvolvimento de competências emocionais são fundamentais para a melhoria da saúde mental. Além disso, a conscientização acerca da importância do cuidado com a saúde psicológica, aliada à disponibilização de recursos de apoio, reveste-se de caráter indispensável para auxiliar os indivíduos a lidar com a ansiedade e, assim, alcançar uma vida mais plena e equilibrada.</p>
 
 <br>
 
@@ -205,13 +209,16 @@ Observa-se que, nos últimos anos, o fenômeno da ansiedade tem recebido atenç�
 <h3>**2. ENQUADRAMENTO SOCIAL-DEMOGRÁFICO**</h3>
 
 <br>
+<p>De modo a pudermos ter um conhecimento mais aprofundado dos dados disponibilizados pelos 1125 inquiridos, foi feito um enquadramento social-demográfico. Para tal, foram feitos estudos em relação ao género, idade e ciclo escolar.</p>
+
+<p>Em termos de distribuição por género: 255 das pessoas inquiridas identificaram-se como mulheres, sendo então 50% da amostra e 170 identificaram-se como homens, correspondendo a 40% da amostra. (Tabela 1).</p>
 
 ```{r, include=FALSE, echo=FALSE}
 Gen <- c(unique(bd$Género))
 freq_absoluta <- table(bd$Género)
 
 # Calcular a frequência relativa (percentagem)
-freq_relativa <- round(prop.table(freq_absoluta) * 100)
+freq_relativa <- round(prop.table(freq_absoluta)*100) 
 
 # Criar a tabela como um data frame
 tabela_frequencias <- data.frame(Género = names(freq_absoluta),
@@ -231,7 +238,7 @@ ftab_sexo
 
 <p>
 
-<center>**Tabela 1** - Distribuição por sexos</center>
+<center>**Tabela 1** - Distribuição por género</center>
 
 </p>
 
@@ -262,7 +269,7 @@ h <- hist(valores,
 
 ```
 
-```{r, include=TRUE, echo=FALSE}
+```{r}
 valores <- as.numeric(bd$P3)
 h <- hist(valores,
           main = "Distribuição das Idades", 
@@ -272,34 +279,8 @@ h <- hist(valores,
           )
 ```
 
+
 ```{r}
-Age<-table(bd$P3)
-
-## 2. Tabela com os dados descritivos
-
-N <- round(nrow(bd))
-Média <- round(mean(Age, na.rm = TRUE))
-Mediana <- round(median(Age, na.rm = TRUE))
-DesPad <-round(sd(Age, na.rm = TRUE))
-Vari <- round(var(Age, na.rm = TRUE))
-Min <- round(min(Age, na.rm = TRUE))
-Max <- round(max(Age, na.rm = TRUE))
-Q1 <- round(quantile(Age, 0.25, na.rm = TRUE))
-Q3 <- round(quantile(Age, 0.75, na.rm = TRUE))
-
-Estatisticas_Descritivas <- c("N", "Média", "Mediana", "Desv. Pad.", "Vari.", "Min", "Max", "1º Q", "3º Q")
-Valores_Idades <- c(N, Média, Mediana, DesPad, Vari, Min, Max, Q1, Q3)
-Tabela <- data.frame(Estatisticas_Descritivas, Valores_Idades)
-
-ftab_obj <- flextable(Tabela)
-ftab_obj <- bg(ftab_obj, bg = "#3895D3", part = "header")
-ftab_obj <- color(ftab_obj, color = "white", part = "header")
-
-ftab_obj
-```
-
-
-```{r, include=TRUE, echo=FALSE}
 # Definir os 7 títulos (ou sintomas)
 specie <- c(
   rep("A", 4),  # 4 repetições para o título "A"
@@ -403,4 +384,5 @@ ggplot(data, aes(fill = condition, y = value, x = specie)) +
     x = "Sintomas",
     y = "Média de Ansiedade"
   ) 
+
 ```
