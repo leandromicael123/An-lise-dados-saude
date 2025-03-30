@@ -105,7 +105,7 @@ output:
 
 <h1 style="font-size: 40px;">
 
-**RELATÓRIO - CASO PRÁTICO - AMBIENTE 10**
+**RELATÓRIO DE AED - CASO PRÁTICO - AMBIENTE 10**
 
 </h1>
 
@@ -132,37 +132,23 @@ Março de 2025
 <td>Tiago Oeber, nº 130667</td>
 <br>
 
+O presente documento foi construído para a Unidade Curricular Análise de Exploratória de Dados, da Licenciatura em Ciência de Dados do Iscte-IUL.
+
+<br>
+
 </ul>
-
-<br>
-
-<hr>
-
-<h3>**INTRODUÇÃO**</h3>
-
-<br>
-
-<p>
-
-</p>
-
-<hr>
 
 <h3>**1. TRATAMENTO DE DADOS**</h3>
 
 <br>
 
-<p>
+<p> 
 
 </p>
 
-<h3>INTRODUÇÃO</h3>
+<h4>**INTRODUÇÃO**</h4>
 
 <br>
-
-O presente documento foi construído para a Unidade Curricular Análise de Exploratória de Dados, da Licenciatura em Ciência de Dados do Iscte-IUL.
-
-### Introdução
 
 A ansiedade e o bem-estar emocional constituem dois pilares essenciais para a compreensão da saúde mental. A ansiedade, enquanto resposta natural do organismo a situações de stress ou perigo, manifesta-se através de sentimentos de preocupação, medo e tensão. Embora essa reação seja intrínseca à nossa natureza, ela pode tornar-se prejudicial quando se intensifica de forma excessiva ou persistente, afetando o quotidiano e o funcionamento psicológico do indivíduo. <br>
 
@@ -174,7 +160,11 @@ Observa-se que, nos últimos anos, o fenômeno da ansiedade tem recebido atenç�
 
 Nesse sentido, a promoção do bem-estar emocional passa pela implementação de estratégias eficazes de gestão do stress. A prática regular de exercício físico, a adoção de hábitos de vida saudáveis, o fortalecimento das redes de apoio e o desenvolvimento de competências emocionais são fundamentais para a melhoria da saúde mental. Além disso, a conscientização acerca da importância do cuidado com a saúde psicológica, aliada à disponibilização de recursos de apoio, reveste-se de caráter indispensável para auxiliar os indivíduos a lidar com a ansiedade e, assim, alcançar uma vida mais plena e equilibrada.
 
-### Metodologia
+<br>
+
+<h4>**Metodologia**</h4>
+
+<br>
 
 A preparação e organização do conjunto de dados e correspondente análise descritiva, em função do contexto e objetivos definidos foi realizada utilizando o Excel, Jamovi e R. Começaremos por abordar a descrição dos dados e as questões de qualidade, incluindo tratamento de valores omissos, duplicados e inconsistências.
 
