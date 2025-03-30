@@ -1,15 +1,104 @@
 ---
 output:
-  html_document:
-    toc: true
-    df_print: paged
-  encoding: UTF-8
-  pdf_document:
-    toc: true
-  word_document:
-    toc: true
+  html_document: default
+  pdf_document: default
+  word_document: default
 ---
+<head>
+  <style>
+    h1{
+    text-align: center;
+    color:lightblue
+    }
+    p{text-align: justify;
+    font-size:17px;
+    text-indent: 2em;
+    }
+    td{
+    font-size: 17px
+    }
+    div.imag {
+      margin-left: auto;
+      margin-right: auto;
+      width: 38%;
+      transform: scale(1.15);
+    }
+    div.imag_2 {
+      margin-left: auto;
+      margin-right: auto;
+      width: 27%;
+    }
+    div.imag_1 {
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+      padding: 50px;
+      transform: scale(2.0);
+    }
 
+    div.imag_3 {
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+      padding: 50px;
+      transform: scale(1.5);
+    }
+    p.leg{
+      text-align: left;
+      width:210px; 
+      border: 0px solid black; 
+      margin: 0 auto;
+    }
+    p.legenda_1{
+      text-align: left;
+      width: 235px; 
+      border: 0px solid black; 
+      margin: 0 auto;
+    }
+
+    div.histor {
+      margin-left: auto;
+      margin-right: auto;
+      width:65%;
+    }
+     div.cent {
+      margin-left: auto;
+      margin-right: auto;
+      width:75%;
+      
+    }
+    div.histor_1 {
+      margin-left: auto;
+      margin-right: auto;
+      width:65%;
+      transform: scale(1.1);
+    }
+    div.remove pre{
+    display: none;
+    }
+    div.histor pre{
+    display: none;
+    }
+    div.abaixar{
+    aling:center;
+    }
+    div.diminuir{
+     aling:center;
+    
+    }
+
+  </style>
+</head>
+
+<body>
+<div class="imag" style="text-aling:center">
+![](https://mostra.caerus.pt/wp-content/uploads/2021/04/ISCTE_Logo.png)
+
+</div>
+<hr>
+<h1 style="font-size: 40px;">**RELATÓRIO - CASO PRÁTICO - AMBIENTE 10 **</h1>
+<p style="text-align:center;font-size: 15px;">Março de 2023</p>
+<br>
 # Relatório de R
 
 O presente documento foi construído para a Unidade Curricular Análise de Exploratória de Dados, da Licenciatura em Ciência de Dados do Iscte-IUL.
