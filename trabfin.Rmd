@@ -4,8 +4,11 @@ output:
   pdf_document: default
   word_document: default
 ---
+
 <head>
-  <style>
+
+```{=html}
+<style>
     h1{
     text-align: center;
     color:lightblue
@@ -88,18 +91,31 @@ output:
     }
 
   </style>
+```
+
 </head>
 
 <body>
-<div class="imag" style="text-aling:center">
-![](https://mostra.caerus.pt/wp-content/uploads/2021/04/ISCTE_Logo.png)
 
-</div>
+::: {.imag style="text-aling:center"}
+![](https://mostra.caerus.pt/wp-content/uploads/2021/04/ISCTE_Logo.png)
+:::
+
 <hr>
-<h1 style="font-size: 40px;">**RELATÓRIO - CASO PRÁTICO - AMBIENTE 10 **</h1>
-<p style="text-align:center;font-size: 15px;">Março de 2023</p>
-<br>
-# Relatório de R
+
+<h1 style="font-size: 40px;">
+
+**RELATÓRIO DE AED**
+
+</h1>
+
+<p style="text-align:center;font-size: 15px;">
+
+Março de 2025
+
+</p>
+
+<br> \# Relatório de R
 
 O presente documento foi construído para a Unidade Curricular Análise de Exploratória de Dados, da Licenciatura em Ciência de Dados do Iscte-IUL.
 
@@ -109,51 +125,27 @@ Este relatório apresenta uma análise exploratória dos dados relativos ao estu
 
 ### Metodologia
 
-A preparação e organização do conjunto de dados e correspondente análise descritiva, em função do contexto e objetivos definidos foi realizada utilizando o Excel, Jamovi e R. 
-Começaremos por abordar a descrição dos dados e as questões de qualidade, incluindo tratamento de valores omissos, duplicados e inconsistências. 
+A preparação e organização do conjunto de dados e correspondente análise descritiva, em função do contexto e objetivos definidos foi realizada utilizando o Excel, Jamovi e R. Começaremos por abordar a descrição dos dados e as questões de qualidade, incluindo tratamento de valores omissos, duplicados e inconsistências.
 
 ```{r setup, include=FALSE, echo=FALSE}
+library(DescTools)
+library(flextable)
+library(descr)
 #Importar os ficheiros do Excel
 Sys.setlocale("LC_ALL", "Portuguese_Portugal.UTF-8")
 library(openxlsx)
 bd <- read.xlsx("Trabalho_ecell.xlsx")
-head(bd)
-```
-
-```{r, include=FALSE, echo=FALSE}
 #Mudar o nome de duas variáveis Variáveis da base de dados
 colnames(bd)
-```
-
-Vou mudar o nome da variável "genero" para "valor_genero" porque já existe uma variável chamada "Género"
-
-```{r, include=FALSE, echo=FALSE}
 names(bd)[4] = "valor_genero"
-```
-
-Vou mudar o nome da variável "P8_rec" para "satisfacao_vida"
-
-```{r, include=FALSE, echo=FALSE}
 names(bd)[9] = "satisfacao_vida"
-```
-
-3.  Para identificar os valores omissos da variável "satisfacao_vida", temos de verificar os valores que são iguais a 99, o valor pré-definido para valores omissos
-
-```{r, include=FALSE, echo=FALSE}
 paste("Existem",sum(bd$satisfacao_vida == 99),"valores omissos")
-```
-
-3.  Imputar os valores omissos da variável "satisfacao_vida"
-
-```{r, include=FALSE, echo=FALSE}
 media_antes <- mean(bd$satisfacao_vida)
 bd$satisfacao_vida[bd$satisfacao_vida == 99] <- NA
 bd$satisfacao_vida[is.na(bd$satisfacao_vida)] <- median(bd$satisfacao_vida, na.rm = TRUE)
 media_depois <- mean(bd$satisfacao_vida)
 paste("Média antes de inputar os valores omissos:",round(media_antes,2),"\n Média depois de inputar os valores omissos com mediana", round(media_depois,2))
 ```
-
-5.  Analise descritiva dos dados
 
 Valores descritivos
 
