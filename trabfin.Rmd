@@ -162,36 +162,18 @@ Março de 2025
 
 </p>
 
-</h1>
-
-<p style="text-align:center;font-size: 15px;">
-
-Março de 2025
-
-</p>
-
 <br>
 
 <h4>Trabalho realizado por:</h4>
-
 <ul>
-
 <td>Leandro Bernardo, nº 125293</td>
-
 <br>
-
 <td>Paula Relvas, nº 43905</td>
-
 <br>
-
 <td>Pedro Gonçalves, nº 130668</td>
-
 <br>
-
 <td>Ricardo Fonseca, nº 130650</td>
-
 <br>
-
 <td>Tiago Oeber, nº 130667</td>
 
 <br>
@@ -439,7 +421,7 @@ ggplot(data, aes(fill = condition, y = value, x = specie)) +
 
 ```
 
-```{r,echo=FALSE}
+```{r, include=TRUE, echo=FALSE}
 
 
 # Criar o dataframe
@@ -490,7 +472,7 @@ Correlações estatisticamente significativas (p \< 0,05) reforçam a robustez d
 
 </p>
 
-```{r, echo=FALSE}
+```{r, include=TRUE, echo=FALSE}
 
 # Criar um dataframe reduzido apenas com as variáveis de interesse
 dados <- bd[, c("v38_ansiedade", "v40_ansiedade", "v43_ansiedade", 
