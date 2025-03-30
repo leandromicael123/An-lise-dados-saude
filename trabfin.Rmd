@@ -116,7 +116,27 @@ Março de 2025
 </p>
 
 <br>
+<h4>Trabalho realizado por:</h4>
 
+<ul>
+
+<td>Dinis Cardoso, nº 105663</td>
+
+<br>
+
+<td>Luana Pinto, nº 111145</td>
+
+<br>
+
+<td>Nuno Matos, nº 111102</td>
+
+<br>
+
+<td>Tomás Mendes, nº 110612</td>
+
+<br>
+
+</ul>
 
 O presente documento foi construído para a Unidade Curricular Análise de Exploratória de Dados, da Licenciatura em Ciência de Dados do Iscte-IUL.
 
@@ -196,7 +216,7 @@ boxplot(valores,
 
 uni
 
-```{r}
+```{r, include=TRUE, echo=FALSE}
 library(ggplot2)
 
 # Definir os 7 títulos (ou sintomas)
