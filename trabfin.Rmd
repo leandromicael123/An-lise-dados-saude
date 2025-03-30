@@ -94,6 +94,42 @@ output:
 ```
 
 </head>
+```{r setup, include=FALSE, echo=FALSE}
+library(DescTools)
+library(flextable)
+library(descr)
+#Importar os ficheiros do Excel
+Sys.setlocale("LC_ALL", "Portuguese_Portugal.UTF-8")
+library(openxlsx)
+bd <- read.xlsx("Trabalho_ecell.xlsx")
+#Mudar o nome de duas variáveis Variáveis da base de dados
+colnames(bd)
+names(bd)[4] = "valor_genero"
+names(bd)[9] = "satisfacao_vida"
+paste("Existem",sum(bd$satisfacao_vida == 99),"valores omissos")
+media_antes <- mean(bd$satisfacao_vida)
+bd$satisfacao_vida[bd$satisfacao_vida == 99] <- NA
+bd$satisfacao_vida[is.na(bd$satisfacao_vida)] <- median(bd$satisfacao_vida, na.rm = TRUE)
+media_depois <- mean(bd$satisfacao_vida)
+paste("Média antes de inputar os valores omissos:",round(media_antes,2),"\n Média depois de inputar os valores omissos com mediana", round(media_depois,2))
+#Lidar com os valores omissos das outras variaveis
+bd$v38_ansiedade[bd$v38_ansiedade == 99] <- NA
+bd$v38_ansiedade[is.na(bd$v38_ansiedade)] <- median(bd$v38_ansiedade, na.rm = TRUE)
+bd$v40_ansiedade[bd$v40_ansiedade == 99] <- NA
+bd$v40_ansiedade[is.na(bd$v40_ansiedade)] <- median(bd$v40_ansiedade, na.rm = TRUE)
+bd$v43_ansiedade[bd$v43_ansiedade == 99] <- NA
+bd$v43_ansiedade[is.na(bd$v43_ansiedade)] <- median(bd$v43_ansiedade, na.rm = TRUE)
+bd$v45_ansiedade[bd$v45_ansiedade == 99] <- NA
+bd$v45_ansiedade[is.na(bd$v45_ansiedade)] <- median(bd$v45_ansiedade, na.rm = TRUE)
+bd$v51_ansiedade[bd$v51_ansiedade == 99] <- NA
+bd$v51_ansiedade[is.na(bd$v51_ansiedade)] <- median(bd$v51_ansiedade, na.rm = TRUE)
+bd$v55_ansiedade[bd$v55_ansiedade == 99] <- NA
+bd$v55_ansiedade[is.na(bd$v55_ansiedade)] <- median(bd$v55_ansiedade, na.rm = TRUE)
+bd$v56_ansiedade[bd$v56_ansiedade == 99] <- NA
+bd$v56_ansiedade[is.na(bd$v56_ansiedade)] <- median(bd$v56_ansiedade, na.rm = TRUE)
+bd$AF_Q554[bd$AF_Q554 == 99] <- NA
+bd$AF_Q554[is.na(bd$AF_Q554)] <- median(bd$AF_Q554, na.rm = TRUE)
+```
 
 <body>
 
@@ -160,48 +196,9 @@ Nesse sentido, a promoção do bem-estar emocional passa pela implementação de
 
 <br>
 
-<p> O tratmento dos valores omissos começou com tornar os valores em brancos para 99, no R nós passamos os valores em null, todas as variaveis relacionadas com ansiedade como "v38_ansiedade", "v40_ansiedade", "v43_ansiedade","v45_ansiedade","v51_ansiedade","v55_ansiedade","v56_ansiedade"
+<p>O tratamento dos valores omissos iniciou-se com a substituição dos espaços em branco pelo valor 99. No entanto, para aplicar uma abordagem mais adequada, esses valores foram temporariamente convertidos para null e, em seguida, substituídos pela mediana. Esse método foi utilizado para as variáveis relacionadas com a ansiedade, como "v38_ansiedade", "v40_ansiedade", "v43_ansiedade", "v45_ansiedade", "v51_ansiedade", "v55_ansiedade" e "v56_ansiedade", que apresentavam um número significativo de valores ausentes. A substituição pela mediana permitiu minimizar distorções nos dados e garantir uma representação mais fiel da distribuição original das respostas.</p>
 
-O tratamento dos valores omissos fez-se em vários passos. Primeiro, os valores em branco foram alterados para um código (99) que é representativo das mesmas. Para a nossa análise, reparámos que as variáveis “Onde vive”, “Transportes públicos”, “Produtos pelo ambiente”, “Apagar as luzes” e “Fechar a torneira” tinham uma grande quantidade de respostas nulas, por esse motivo realizou-se uma imputação dos valores inexistentes pela mediana das respostas.
 
-Neste ponto foram atribuídos valores numéricos a variáveis de texto e valores texto a variáveis numéricas, sendo que no caso de resposta em branco foi atribuído anteriormente o valor 99.</p>
-
-```{r setup, include=TRUE, echo=TRUE}
-library(DescTools)
-library(flextable)
-library(descr)
-#Importar os ficheiros do Excel
-Sys.setlocale("LC_ALL", "Portuguese_Portugal.UTF-8")
-library(openxlsx)
-bd <- read.xlsx("Trabalho_ecell.xlsx")
-#Mudar o nome de duas variáveis Variáveis da base de dados
-colnames(bd)
-names(bd)[4] = "valor_genero"
-names(bd)[9] = "satisfacao_vida"
-paste("Existem",sum(bd$satisfacao_vida == 99),"valores omissos")
-media_antes <- mean(bd$satisfacao_vida)
-bd$satisfacao_vida[bd$satisfacao_vida == 99] <- NA
-bd$satisfacao_vida[is.na(bd$satisfacao_vida)] <- median(bd$satisfacao_vida, na.rm = TRUE)
-media_depois <- mean(bd$satisfacao_vida)
-paste("Média antes de inputar os valores omissos:",round(media_antes,2),"\n Média depois de inputar os valores omissos com mediana", round(media_depois,2))
-#Lidar com os valores omissos das outras variaveis
-bd$v38_ansiedade[bd$v38_ansiedade == 99] <- NA
-bd$v38_ansiedade[is.na(bd$v38_ansiedade)] <- median(bd$v38_ansiedade, na.rm = TRUE)
-bd$v40_ansiedade[bd$v40_ansiedade == 99] <- NA
-bd$v40_ansiedade[is.na(bd$v40_ansiedade)] <- median(bd$v40_ansiedade, na.rm = TRUE)
-bd$v43_ansiedade[bd$v43_ansiedade == 99] <- NA
-bd$v43_ansiedade[is.na(bd$v43_ansiedade)] <- median(bd$v43_ansiedade, na.rm = TRUE)
-bd$v45_ansiedade[bd$v45_ansiedade == 99] <- NA
-bd$v45_ansiedade[is.na(bd$v45_ansiedade)] <- median(bd$v45_ansiedade, na.rm = TRUE)
-bd$v51_ansiedade[bd$v51_ansiedade == 99] <- NA
-bd$v51_ansiedade[is.na(bd$v51_ansiedade)] <- median(bd$v51_ansiedade, na.rm = TRUE)
-bd$v55_ansiedade[bd$v55_ansiedade == 99] <- NA
-bd$v55_ansiedade[is.na(bd$v55_ansiedade)] <- median(bd$v55_ansiedade, na.rm = TRUE)
-bd$v56_ansiedade[bd$v56_ansiedade == 99] <- NA
-bd$v56_ansiedade[is.na(bd$v56_ansiedade)] <- median(bd$v56_ansiedade, na.rm = TRUE)
-bd$AF_Q554[bd$AF_Q554 == 99] <- NA
-bd$AF_Q554[is.na(bd$AF_Q554)] <- median(bd$AF_Q554, na.rm = TRUE)
-```
 
 Valores descritivos
 

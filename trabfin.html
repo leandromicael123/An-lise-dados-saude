@@ -529,84 +529,21 @@ de caráter indispensável para auxiliar os indivíduos a lidar com a
 ansiedade e, assim, alcançar uma vida mais plena e equilibrada.
 </p>
 <p><br></p>
-<h4>
-<strong>Metodologia</strong>
-</h4>
+<h3>
+<strong>1. TRATAMENTO DE DADOS</strong>
+</h3>
 <p><br></p>
-<p>A preparação e organização do conjunto de dados e correspondente
-análise descritiva, em função do contexto e objetivos definidos foi
-realizada utilizando o Excel, Jamovi e R. Começaremos por abordar a
-descrição dos dados e as questões de qualidade, incluindo tratamento de
-valores omissos, duplicados e inconsistências.</p>
-<pre class="r"><code>library(DescTools)</code></pre>
-<pre><code>## Warning: package &#39;DescTools&#39; was built under R version 4.4.3</code></pre>
-<pre class="r"><code>library(flextable)</code></pre>
-<pre><code>## Warning: package &#39;flextable&#39; was built under R version 4.4.3</code></pre>
-<pre class="r"><code>library(descr)</code></pre>
-<pre><code>## Warning: package &#39;descr&#39; was built under R version 4.4.3</code></pre>
-<pre class="r"><code>#Importar os ficheiros do Excel
-Sys.setlocale(&quot;LC_ALL&quot;, &quot;Portuguese_Portugal.UTF-8&quot;)</code></pre>
-<pre><code>## [1] &quot;LC_COLLATE=Portuguese_Portugal.utf8;LC_CTYPE=Portuguese_Portugal.utf8;LC_MONETARY=Portuguese_Portugal.utf8;LC_NUMERIC=C;LC_TIME=Portuguese_Portugal.utf8&quot;</code></pre>
-<pre class="r"><code>library(openxlsx)</code></pre>
-<pre><code>## Warning: package &#39;openxlsx&#39; was built under R version 4.4.3</code></pre>
-<pre class="r"><code>bd &lt;- read.xlsx(&quot;Trabalho_ecell.xlsx&quot;)
-#Mudar o nome de duas variáveis Variáveis da base de dados
-colnames(bd)</code></pre>
-<pre><code>##  [1] &quot;ID&quot;                                                                               
-##  [2] &quot;nutII&quot;                                                                            
-##  [3] &quot;Região&quot;                                                                           
-##  [4] &quot;genero&quot;                                                                           
-##  [5] &quot;Género&quot;                                                                           
-##  [6] &quot;P3&quot;                                                                               
-##  [7] &quot;cicloescolar&quot;                                                                     
-##  [8] &quot;Nivel.de.ensino&quot;                                                                  
-##  [9] &quot;P8_rec&quot;                                                                           
-## [10] &quot;v38_ansiedade&quot;                                                                    
-## [11] &quot;Senti.a.minha.boca.seca&quot;                                                          
-## [12] &quot;v40_ansiedade&quot;                                                                    
-## [13] &quot;Senti.dificuldades.em.respirar&quot;                                                   
-## [14] &quot;v43_ansiedade&quot;                                                                    
-## [15] &quot;Senti-me.trémulo.(por.exemplo.sem.forças.nas.pernas).&quot;                            
-## [16] &quot;v45_ansiedade&quot;                                                                    
-## [17] &quot;Preocupei-me.com.situações.em.que.podia.entrar.em.pânico.e.fazer.figura.ridícula.&quot;
-## [18] &quot;v51_ansiedade&quot;                                                                    
-## [19] &quot;Senti-me.quase.a.entrar.em.pânico.&quot;                                               
-## [20] &quot;v55_ansiedade&quot;                                                                    
-## [21] &quot;Senti.alterações.no.meu.coração.sem.fazer.exercício.físico.&quot;                      
-## [22] &quot;v56_ansiedade&quot;                                                                    
-## [23] &quot;Senti-me.assustado.sem.ter.uma.boa.razão.para.isso.&quot;                              
-## [24] &quot;AF_Q554&quot;                                                                          
-## [25] &quot;X25&quot;                                                                              
-## [26] &quot;X26&quot;                                                                              
-## [27] &quot;X27&quot;                                                                              
-## [28] &quot;X28&quot;</code></pre>
-<pre class="r"><code>names(bd)[4] = &quot;valor_genero&quot;
-names(bd)[9] = &quot;satisfacao_vida&quot;
-paste(&quot;Existem&quot;,sum(bd$satisfacao_vida == 99),&quot;valores omissos&quot;)</code></pre>
-<pre><code>## [1] &quot;Existem 6 valores omissos&quot;</code></pre>
-<pre class="r"><code>media_antes &lt;- mean(bd$satisfacao_vida)
-bd$satisfacao_vida[bd$satisfacao_vida == 99] &lt;- NA
-bd$satisfacao_vida[is.na(bd$satisfacao_vida)] &lt;- median(bd$satisfacao_vida, na.rm = TRUE)
-media_depois &lt;- mean(bd$satisfacao_vida)
-paste(&quot;Média antes de inputar os valores omissos:&quot;,round(media_antes,2),&quot;\n Média depois de inputar os valores omissos com mediana&quot;, round(media_depois,2))</code></pre>
-<pre><code>## [1] &quot;Média antes de inputar os valores omissos: 7.64 \n Média depois de inputar os valores omissos com mediana 7.15&quot;</code></pre>
-<pre class="r"><code>#Lidar com os valores omissos das outras variaveis
-bd$v38_ansiedade[bd$v38_ansiedade == 99] &lt;- NA
-bd$v38_ansiedade[is.na(bd$v38_ansiedade)] &lt;- median(bd$v38_ansiedade, na.rm = TRUE)
-bd$v40_ansiedade[bd$v40_ansiedade == 99] &lt;- NA
-bd$v40_ansiedade[is.na(bd$v40_ansiedade)] &lt;- median(bd$v40_ansiedade, na.rm = TRUE)
-bd$v43_ansiedade[bd$v43_ansiedade == 99] &lt;- NA
-bd$v43_ansiedade[is.na(bd$v43_ansiedade)] &lt;- median(bd$v43_ansiedade, na.rm = TRUE)
-bd$v45_ansiedade[bd$v45_ansiedade == 99] &lt;- NA
-bd$v45_ansiedade[is.na(bd$v45_ansiedade)] &lt;- median(bd$v45_ansiedade, na.rm = TRUE)
-bd$v51_ansiedade[bd$v51_ansiedade == 99] &lt;- NA
-bd$v51_ansiedade[is.na(bd$v51_ansiedade)] &lt;- median(bd$v51_ansiedade, na.rm = TRUE)
-bd$v55_ansiedade[bd$v55_ansiedade == 99] &lt;- NA
-bd$v55_ansiedade[is.na(bd$v55_ansiedade)] &lt;- median(bd$v55_ansiedade, na.rm = TRUE)
-bd$v56_ansiedade[bd$v56_ansiedade == 99] &lt;- NA
-bd$v56_ansiedade[is.na(bd$v56_ansiedade)] &lt;- median(bd$v56_ansiedade, na.rm = TRUE)
-bd$AF_Q554[bd$AF_Q554 == 99] &lt;- NA
-bd$AF_Q554[is.na(bd$AF_Q554)] &lt;- median(bd$AF_Q554, na.rm = TRUE)</code></pre>
+<p>
+O tratamento dos valores omissos iniciou-se com a substituição dos
+espaços em branco pelo valor 99. No ambiente R, esses valores seriam
+representados como null. As variáveis relacionadas com a ansiedade, tais
+como “v38_ansiedade”, “v40_ansiedade”, “v43_ansiedade”, “v45_ansiedade”,
+“v51_ansiedade”, “v55_ansiedade” e “v56_ansiedade”, apresentavam um
+número significativo de valores em falta. Para minimizar o impacto
+desses valores ausentes na análise, optou-se por substituí-los pela
+mediana, garantindo assim uma abordagem mais robusta e representativa
+dos dados.
+</p>
 <p>Valores descritivos</p>
 <pre><code>##    Valor Frequência.Absoluta Frequência.Relativa....
 ## 1      0                  10                    0.89
