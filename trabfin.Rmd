@@ -262,6 +262,17 @@ h <- hist(valores,
 ```
 
 ```{r}
+valores <- as.numeric(bd$P3)
+h <- hist(valores,
+          main = "Distribuição das Idades", 
+          xlab = "Idades", 
+          ylab = "Frequência", 
+          col = "lightgreen", 
+          )
+```
+
+
+```{r}
 # Definir os 7 títulos (ou sintomas)
 specie <- c(
   rep("A", 4),  # 4 repetições para o título "A"
@@ -304,19 +315,16 @@ data <- data.frame(specie, condition, value)
 # Verifique a estrutura dos dados
 str(data)
 
-# Criar o gráfico de lollipop
-ggplot(data, aes(x = specie, y = value, color = condition)) + 
-  # Adicionando as linhas do lollipop
-  geom_segment(aes(x = specie, xend = specie, y = 0, yend = value), size = 1) +
-  # Adicionando os pontos
-  geom_point(size = 3, shape = 21, fill = "white") +
-  # Títulos e rótulos
+# Criar o gráfico de barras agrupadas
+ggplot(data, aes(fill = condition, y = value, x = specie)) + 
+  geom_bar(stat = "identity", position = "dodge") +  # Usar barras agrupadas
   labs(
     title = "Níveis de Ansiedade por Idade",
     x = "Sintomas",
     y = "Média de Ansiedade"
   ) +
-  theme_minimal()  # Tema simples
+  theme_minimal()  # Um tema mais simples
+
 
 ```
 
