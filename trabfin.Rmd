@@ -334,17 +334,6 @@ length(specie)  # Deve retornar 28 (7 títulos * 4 géneros)
 # Replicar 'bd$Género' para corresponder ao comprimento de 'specie' (4 géneros por título)
 condition <- rep(bd$Género, length.out = length(specie))
 
-# Definir as médias das colunas de ansiedade
-mean_values <- c(
-  mean(bd$v38_ansiedade),
-  mean(bd$v40_ansiedade),
-  mean(bd$v43_ansiedade),
-  mean(bd$v45_ansiedade),
-  mean(bd$v51_ansiedade),
-  mean(bd$v55_ansiedade),
-  mean(bd$v56_ansiedade)
-)
-
 # Replicar as médias para corresponder ao comprimento de 'specie'
 value <- rep(mean_values, length.out = length(specie))
 
