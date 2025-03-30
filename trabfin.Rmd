@@ -261,6 +261,51 @@ h <- hist(valores,
 
 ```
 
+```{r}
+# Definir os 7 títulos (ou sintomas)
+specie <- c(
+  rep("A", 4),  # 4 repetições para o título "A"
+  rep("B", 4),  # 4 repetições para o título "B"
+  rep("C", 4),  # 4 repetições para o título "C"
+  rep("D", 4),  # 4 repetições para o título "D"
+  rep("E", 4),  # 4 repetições para o título "E"
+  rep("F", 4),  # 4 repetições para o título "F"
+  rep("G", 4)   # 4 repetições para o título "G"
+)
+
+# Verificar o comprimento de 'specie'
+length(specie)  # Deve retornar 28 (7 títulos * 4 géneros)
+
+# Replicar 'bd$Género' para corresponder ao comprimento de 'specie' (4 géneros por título)
+condition <- rep(bd$P3, length.out = length(specie))
+
+mean_values <- c(
+mean(bd$v38_ansiedade),
+mean(bd$v40_ansiedade),
+mean(bd$v43_ansiedade),
+mean(bd$v45_ansiedade),
+mean(bd$v51_ansiedade),
+mean(bd$v55_ansiedade),
+mean(bd$v56_ansiedade)
+)
+
+# Replicar as médias para corresponder ao comprimento de 'specie'
+value <- rep(mean_values, length.out = length(specie))
+
+# Criar o dataframe
+data <- data.frame(specie, condition, value)
+
+# Criar o gráfico de barras agrupadas
+ggplot(data, aes(fill = condition, y = value, x = specie)) + 
+  geom_bar(position = "dodge", stat = "identity") +
+  labs(
+    title = "Níveis de Ansiedade por Idade",
+    x = "Sintomas",
+    y = "Média de Ansiedade"
+  ) 
+```
+
+
 ```{r, include=TRUE, echo=FALSE}
 #boxplot
 boxplot(valores, 
