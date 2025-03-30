@@ -193,6 +193,23 @@ bd$satisfacao_vida[bd$satisfacao_vida == 99] <- NA
 bd$satisfacao_vida[is.na(bd$satisfacao_vida)] <- median(bd$satisfacao_vida, na.rm = TRUE)
 media_depois <- mean(bd$satisfacao_vida)
 paste("Média antes de inputar os valores omissos:",round(media_antes,2),"\n Média depois de inputar os valores omissos com mediana", round(media_depois,2))
+#Lidar com os valores omissos das outras variaveis
+bd$v38_ansiedade[bd$v38_ansiedade == 99] <- NA
+bd$v38_ansiedade[is.na(bd$v38_ansiedade)] <- median(bd$v38_ansiedade, na.rm = TRUE)
+bd$v40_ansiedade[bd$v40_ansiedade == 99] <- NA
+bd$v40_ansiedade[is.na(bd$v40_ansiedade)] <- median(bd$v40_ansiedade, na.rm = TRUE)
+bd$v43_ansiedade[bd$v43_ansiedade == 99] <- NA
+bd$v43_ansiedade[is.na(bd$v43_ansiedade)] <- median(bd$v43_ansiedade, na.rm = TRUE)
+bd$v45_ansiedade[bd$v45_ansiedade == 99] <- NA
+bd$v45_ansiedade[is.na(bd$v45_ansiedade)] <- median(bd$v45_ansiedade, na.rm = TRUE)
+bd$v51_ansiedade[bd$v51_ansiedade == 99] <- NA
+bd$v51_ansiedade[is.na(bd$v51_ansiedade)] <- median(bd$v51_ansiedade, na.rm = TRUE)
+bd$v55_ansiedade[bd$v55_ansiedade == 99] <- NA
+bd$v55_ansiedade[is.na(bd$v55_ansiedade)] <- median(bd$v55_ansiedade, na.rm = TRUE)
+bd$v56_ansiedade[bd$v56_ansiedade == 99] <- NA
+bd$v56_ansiedade[is.na(bd$v56_ansiedade)] <- median(bd$v56_ansiedade, na.rm = TRUE)
+bd$AF_Q554[bd$AF_Q554 == 99] <- NA
+bd$AF_Q554[is.na(bd$AF_Q554)] <- median(bd$AF_Q554, na.rm = TRUE)
 ```
 
 Valores descritivos
