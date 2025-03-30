@@ -115,7 +115,8 @@ Março de 2025
 
 </p>
 
-<br> \# Relatório de R
+<br>
+
 
 O presente documento foi construído para a Unidade Curricular Análise de Exploratória de Dados, da Licenciatura em Ciência de Dados do Iscte-IUL.
 
