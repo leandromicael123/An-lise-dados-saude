@@ -303,21 +303,19 @@ h <- hist(valores,
           )
 ```
 ```{r}
-Age<-table(bd$P3)
-
-## 2. Tabela com os dados descritivos
+# Tabela com os dados descritivos
 
 N <- round(nrow(bd))
-Média <- round(mean(Age, na.rm = TRUE))
-Mediana <- round(median(Age, na.rm = TRUE))
-DesPad <-round(sd(Age, na.rm = TRUE))
-Vari <- round(var(Age, na.rm = TRUE))
-Min <- round(min(Age, na.rm = TRUE))
-Max <- round(max(Age, na.rm = TRUE))
-Q1 <- round(quantile(Age, 0.25, na.rm = TRUE))
-Q3 <- round(quantile(Age, 0.75, na.rm = TRUE))
+Média <- round(mean(bd$P3, na.rm = TRUE))
+Mediana <- round(median(bd$P3, na.rm = TRUE))
+DesPad <-round(sd(bd$P3, na.rm = TRUE))
+Vari <- round(var(bd$P3, na.rm = TRUE))
+Min <- round(min(bd$P3, na.rm = TRUE))
+Max <- round(max(bd$P3, na.rm = TRUE))
+Q1 <- round(quantile(bd$P3, 0.25, na.rm = TRUE))
+Q3 <- round(quantile(bd$P3, 0.75, na.rm = TRUE))
 
-Estatisticas_Descritivas <- c("N", "Média", "Mediana", "Desv. Pad.", "Vari.", "Min", "Max", "1º Q", "3º Q")
+Estatisticas_Descritivas <- c("N", "Média", "Mediana", "Desv. Pad.", "Vari.", "Min", "Max", "Q1", "Q3")
 Valores_Idades <- c(N, Média, Mediana, DesPad, Vari, Min, Max, Q1, Q3)
 Tabela <- data.frame(Estatisticas_Descritivas, Valores_Idades)
 
